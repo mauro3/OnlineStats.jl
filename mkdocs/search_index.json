@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "OnlineStats.jl\n\n\nOnlineStats\n is a Julia package which provides online algorithms for statistical models.\n\n\nOnline algorithms are well suited for streaming data or when data is too large to hold in memory.\n\n\nObservations are processed one at a time and all \nalgorithms use O(1) memory\n.\n\n\n\n\nOverview\n\n\nEvery OnlineStat is a Type\n\n\nusing OnlineStats\no = Mean()\n\n\n\n\nAll OnlineStats can be updated\n\n\ny = randn(100)\ny2 = randn(100)\n\n# update Mean\nfor yi in y\n    fit!(o, yi)\nend\nfor yi in y2\n    fit!(o, yi)\nend\n\n# or more simply:\nfit!(o, y)\nfit!(o, y2)\n\n\n\n\nOnlineStats share a common interface\n\n\nvalue(o)  # associated value of an OnlineStat\nnobs(o)   # number of observations used\n\n\n\n\n\n\nWhat Can OnlineStats Do?\n\n\nWhile many estimates can be calculated analytically with an online algorithm, several\ntype rely on stochastic approximation.\n\n\nSummary Statistics\n\n\n\n\nMean: \nMean\n, \nMeans\n\n\nVariance: \nVariance\n, \nVariances\n\n\nQuantiles: \nQuantileMM\n, \nQuantileSGD\n\n\nCovariance Matrix: \nCovMatrix\n\n\nMaximum and Minimum:  \nExtrema\n\n\nSkewness and Kurtosis:  \nMoments\n\n\nSum/Differences:  \nSum\n, \nSums\n, \nDiff\n, \nDiffs\n\n\n\n\nDensity Estimation\n\n\n\n\ndistributionfit(D, data)\n\n\nFor \nD in [Beta, Categorical, Cauchy, Gamma, LogNormal, Normal, Multinomial, MvNormal]\n\n\n\n\n\n\nGaussian Mixtures: \nNormalMix\n\n\n\n\nPredictive Modeling\n\n\n\n\nLinear Regression: \nLinReg\n, \nStatLearn\n\n\nLogistic Regression: \nStatLearn\n\n\nPoisson Regression: \nStatLearn\n\n\nSupport Vector Machines: \nStatLearn\n\n\nQuantile Regression: \nStatLearn\n, \nQuantReg\n\n\nHuber Loss Regression: \nStatLearn\n\n\nL1 Loss Regression: \nStatLearn\n\n\n\n\nOther\n\n\n\n\nK-Means clustering: \nKMeans\n\n\nBootstrapping: \nBernoulliBootstrap\n, \nPoissonBootstrap\n\n\nApproximate count of distinct elements: \nHyperLogLog", 
+            "text": "OnlineStats.jl\n\n\nOnlineStats\n is a Julia package which provides online algorithms for statistical models.\n\n\nOnline algorithms are well suited for streaming data or when data is too large to hold in memory.\n\n\nObservations are processed one at a time and all \nalgorithms use O(1) memory\n.\n\n\n\n\nOverview\n\n\nEvery OnlineStat is a Type\n\n\nusing\n \nOnlineStats\n\n\no\n \n=\n \nMean\n()\n\n\n\n\n\n\nAll OnlineStats can be updated\n\n\ny\n \n=\n \nrandn\n(\n100\n)\n\n\ny2\n \n=\n \nrandn\n(\n100\n)\n\n\n\n# update Mean\n\n\nfor\n \nyi\n \nin\n \ny\n\n    \nfit\n!\n(\no\n,\n \nyi\n)\n\n\nend\n\n\nfor\n \nyi\n \nin\n \ny2\n\n    \nfit\n!\n(\no\n,\n \nyi\n)\n\n\nend\n\n\n\n# or more simply:\n\n\nfit\n!\n(\no\n,\n \ny\n)\n\n\nfit\n!\n(\no\n,\n \ny2\n)\n\n\n\n\n\n\nOnlineStats share a common interface\n\n\nvalue\n(\no\n)\n  \n# associated value of an OnlineStat\n\n\nnobs\n(\no\n)\n   \n# number of observations used\n\n\n\n\n\n\n\n\nWhat Can OnlineStats Do?\n\n\nWhile many estimates can be calculated analytically with an online algorithm, several\ntype rely on stochastic approximation.\n\n\nSummary Statistics\n\n\n\n\nMean: \nMean\n, \nMeans\n\n\nVariance: \nVariance\n, \nVariances\n\n\nQuantiles: \nQuantileMM\n, \nQuantileSGD\n\n\nCovariance Matrix: \nCovMatrix\n\n\nMaximum and Minimum:  \nExtrema\n\n\nSkewness and Kurtosis:  \nMoments\n\n\nSum/Differences:  \nSum\n, \nSums\n, \nDiff\n, \nDiffs\n\n\n\n\nDensity Estimation\n\n\n\n\ndistributionfit(D, data)\n\n\nFor \nD in [Beta, Categorical, Cauchy, Gamma, LogNormal, Normal, Multinomial, MvNormal]\n\n\n\n\n\n\nGaussian Mixtures: \nNormalMix\n\n\n\n\nPredictive Modeling\n\n\n\n\nLinear Regression: \nLinReg\n, \nStatLearn\n\n\nLogistic Regression: \nStatLearn\n\n\nPoisson Regression: \nStatLearn\n\n\nSupport Vector Machines: \nStatLearn\n\n\nQuantile Regression: \nStatLearn\n, \nQuantReg\n\n\nHuber Loss Regression: \nStatLearn\n\n\nL1 Loss Regression: \nStatLearn\n\n\n\n\nOther\n\n\n\n\nK-Means clustering: \nKMeans\n\n\nBootstrapping: \nBernoulliBootstrap\n, \nPoissonBootstrap\n\n\nApproximate count of distinct elements: \nHyperLogLog", 
             "title": "Home"
         }, 
         {
@@ -17,17 +17,17 @@
         }, 
         {
             "location": "/#every-onlinestat-is-a-type", 
-            "text": "using OnlineStats\no = Mean()", 
+            "text": "using   OnlineStats  o   =   Mean ()", 
             "title": "Every OnlineStat is a Type"
         }, 
         {
             "location": "/#all-onlinestats-can-be-updated", 
-            "text": "y = randn(100)\ny2 = randn(100)\n\n# update Mean\nfor yi in y\n    fit!(o, yi)\nend\nfor yi in y2\n    fit!(o, yi)\nend\n\n# or more simply:\nfit!(o, y)\nfit!(o, y2)", 
+            "text": "y   =   randn ( 100 )  y2   =   randn ( 100 )  # update Mean  for   yi   in   y \n     fit ! ( o ,   yi )  end  for   yi   in   y2 \n     fit ! ( o ,   yi )  end  # or more simply:  fit ! ( o ,   y )  fit ! ( o ,   y2 )", 
             "title": "All OnlineStats can be updated"
         }, 
         {
             "location": "/#onlinestats-share-a-common-interface", 
-            "text": "value(o)  # associated value of an OnlineStat\nnobs(o)   # number of observations used", 
+            "text": "value ( o )    # associated value of an OnlineStat  nobs ( o )     # number of observations used", 
             "title": "OnlineStats share a common interface"
         }, 
         {
@@ -57,7 +57,7 @@
         }, 
         {
             "location": "/api/", 
-            "text": "API\n\n\nBernoulliBootstrap\n\n\nBernoulliBootstrap(o::OnlineStat, f::Function, r::Int = 1000)\n\n\nCreate a double-or-nothing bootstrap using \nr\n replicates of \no\n for estimate \nf(o)\n\n\nExample:\n\n\nBernoulliBootstrap(Mean(), mean, 1000)\n\n\n\n\nTop\n\n\nBiasMatrix\n\n\nAdda bias/intercept term to a matrix on the fly without creating or copying data:\n\n\n\n\nBiasMatrix(rand(10,5))\n is roughly equivalent to \nhcat(rand(10,5), ones(10))\n\n\n\n\nTop\n\n\nBiasVector\n\n\nAdd a bias/intercept term to a vector on the fly without creating or copying data:\n\n\n\n\nBiasVector(rand(10))\n is roughly equivalent to \nvcat(rand(10), 1.0)\n\n\n\n\nTop\n\n\nBoundedEqualWeight\n\n\nOne of the \nWeight\n types.  Uses \nEqualWeight\n until reaching \n\u03bb = 2 / (1 + lookback)\n, then weights are held constant.\n\n\n\n\nBoundedEqualWeight(\u03bb::Float64)\n\n\nBoundedEqualWeight(lookback::Int)\n\n\n\n\nTop\n\n\nCovMatrix\n\n\nCovariance matrix, similar to \ncov(x)\n.\n\n\no = CovMatrix(x, EqualWeight())\no = CovMatrix(x)\nfit!(o, x2)\n\ncor(o)\ncov(o)\nmean(o)\nvar(o)\n\n\n\n\nTop\n\n\nDiff\n\n\nTrack the last value and the last difference.\n\n\no = Diff()\no = Diff(y)\n\n\n\n\nTop\n\n\nDiffs\n\n\nTrack the last value and the last difference for multiple series.  Ignores \nWeight\n.\n\n\no = Diffs()\no = Diffs(y)\n\n\n\n\nTop\n\n\nEqualWeight\n\n\nOne of the \nWeight\n types.  Observations are weighted equally.  For analytical updates, the online algorithm will give results equal to the offline version.\n\n\n\n\nEqualWeight()\n\n\n\n\nTop\n\n\nExponentialWeight\n\n\nOne of the \nWeight\n types.  Updates are performed with a constant weight \n\u03bb = 2 / (1 + lookback)\n.\n\n\n\n\nExponentialWeight(\u03bb::Float64)\n\n\nExponentialWeight(lookback::Int)\n\n\n\n\nTop\n\n\nExtrema\n\n\nExtrema (maximum and minimum).\n\n\no = Extrema(y)\nfit!(o, y2)\nextrema(o)\n\n\n\n\nTop\n\n\nFitCategorical\n\n\nFind the proportions for each unique input.  Categories are sorted by proportions. Ignores \nWeight\n.\n\n\no = FitCategorical(y)\n\n\n\n\nTop\n\n\nHyperLogLog\n\n\nHyperLogLog(b)\n\n\nApproximate count of distinct elements.  \nHyperLogLog\n differs from other OnlineStats in that any input to \nfit!(o::HyperLogLog, input)\n is considered a singleton.  Thus, a vector of inputs must be done by:\n\n\no = HyperLogLog(4)\nfor yi in y\n    fit!(o, yi)\nend\n\n\n\n\nTop\n\n\nKMeans\n\n\nApproximate K-Means clustering of multivariate data.\n\n\no = KMeans(y, 3, LearningRate())\nvalue(o)\n\n\n\n\nTop\n\n\nLearningRate\n\n\nOne of the \nWeight\n types.  It's primary use is for the OnlineStats that use stochastic approximation (\nStatLearn\n, \nQuantReg\n, \nQuantileMM\n, \nQuantileSGD\n, \nNormalMix\n, and \nKMeans\n).  The weight at update \nt\n is \n1 / t ^ r\n.  When weights reach \n\u03bb\n, they are held consant.  Compare to \nLearningRate2\n.\n\n\n\n\nLearningRate(r = 0.5, \u03bb = 0.0)\n\n\n\n\nTop\n\n\nLearningRate2\n\n\nOne of the \nWeight\n types.  It's primary use is for the OnlineStats that use stochastic approximation (\nStatLearn\n, \nQuantReg\n, \nQuantileMM\n, \nQuantileSGD\n, \nNormalMix\n, and \nKMeans\n).  The weight at update \nt\n is \n1 / (1 + c * (t - 1))\n.  When weights reach \n\u03bb\n, they are held consant.  Compare to \nLearningRate\n.\n\n\n\n\nLearningRate2(c = 0.5, \u03bb = 0.0)\n\n\n\n\nTop\n\n\nLinReg\n\n\nAnalytical Linear Regression.\n\n\nWith \nEqualWeight\n, this is equivalent to offline linear regression.\n\n\nusing OnlineStats, StatsBase\no = LinReg(x, y, wgt = EqualWeight())\ncoef(o)\ncoeftable(o)\nvcov(o)\nstderr(o)\npredict(o, x)\nconfint(o, .95)\n\n\n\n\nTop\n\n\nMean\n\n\nMean of a single series.\n\n\ny = randn(100)\no = Mean()\nfit!(o, y)\nmean(o)  # return the mean\ncenter(o, 0.5)  # returns 0.5 - mean(o)\n\n\n\n\nTop\n\n\nMeans\n\n\nMeans of multiple series, similar to \nmean(x, 1)\n.\n\n\nx = randn(1000, 5)\no = Means(5)\nfit!(o, x)\nmean(o)\n\n\n\n\nTop\n\n\nMoments\n\n\nUnivariate, first four moments.  Provides \nmean\n, \nvar\n, \nskewness\n, \nkurtosis\n\n\no = Moments(x, EqualWeight())\no = Moments(x)\nfit!(o, x2)\n\nmean(o)\nvar(o)\nstd(o)\nStatsBase.skewness(o)\nStatsBase.kurtosis(o)\n\n\n\n\nTop\n\n\nNormalMix\n\n\nNormal Mixture of \nk\n components via an online EM algorithm.  \nstart\n is a keyword argument specifying the initial parameters.\n\n\no = NormalMix(2, LearningRate(); start = MixtureModel(Normal, [(0, 1), (3, 1)]))\nmean(o)\nvar(o)\nstd(o)\n\n\n\n\nTop\n\n\nQuantReg\n\n\nOnline MM Algorithm for Quantile Regression.\n\n\nTop\n\n\nQuantileMM\n\n\nApproximate quantiles via an online MM algorithm.  Typically more accurate than \nQuantileSGD\n.\n\n\no = QuantileMM(y, LearningRate())\no = QuantileMM(y, tau = [.25, .5, .75])\nfit!(o, y2)\n\n\n\n\nTop\n\n\nQuantileSGD\n\n\nApproximate quantiles via stochastic gradient descent.\n\n\no = QuantileSGD(y, LearningRate())\no = QuantileSGD(y, tau = [.25, .5, .75])\nfit!(o, y2)\n\n\n\n\nTop\n\n\nStatLearn\n\n\nOnline statistical learning algorithms.\n\n\n\n\nStatLearn(p)\n\n\nStatLearn(x, y)\n\n\nStatLearn(x, y, b)\n\n\n\n\nThe model is defined by:\n\n\nModelDefinition\n\n\n\n\nL2Regression()\n     - Squared error loss.  Default.\n\n\nL1Regression()\n     - Absolute loss\n\n\nLogisticRegression()\n     - Model for data in {0, 1}\n\n\nPoissonRegression()\n     - Model count data {0, 1, 2, 3, ...}\n\n\nQuantileRegression(\u03c4)\n     - Model conditional quantiles\n\n\nSVMLike()\n     - For data in {-1, 1}.  Perceptron with \nNoPenalty\n. SVM with \nRidgePenalty\n.\n\n\nHuberRegression(\u03b4)\n     - Robust Huber loss\n\n\n\n\nPenalty\n\n\n\n\nNoPenalty()\n     - No penalty.  Default.\n\n\nRidgePenalty(\u03bb)\n     - Ridge regularization: \ndot(\u03b2, \u03b2)\n\n\nLassoPenalty(\u03bb)\n     - Lasso regularization: \nsumabs(\u03b2)\n\n\nElasticNetPenalty(\u03bb, \u03b1)\n     - Ridge/LASSO weighted average.  \n\u03b1 = 0\n is Ridge, \n\u03b1 = 1\n is LASSO.\n\n\nSCADPenalty(\u03bb, a = 3.7)\n     - Smoothly clipped absolute deviation penalty.  Essentially LASSO with less bias     for larger coefficients.\n\n\n\n\nAlgorithm\n\n\n\n\nSGD()\n     - Stochastic gradient descent.  Default.\n\n\nAdaGrad()\n     - Adaptive gradient method. Ignores \nWeight\n.\n\n\nAdaDelta()\n     - Extension of AdaGrad.  Ignores \nWeight\n.\n\n\nRDA()\n     - Regularized dual averaging with ADAGRAD.  Ignores \nWeight\n.\n\n\nMMGrad()\n     - Experimental online MM gradient method.\n\n\n\n\nNote:\n The order of the \nModelDefinition\n, \nPenalty\n, and \nAlgorithm\n arguments don't matter.\n\n\nStatLearn(x, y)\nStatLearn(x, y, AdaGrad())\nStatLearn(x, y, MMGrad(), LearningRate(.5))\nStatLearn(x, y, 10, LearningRate(.7), RDA(), SVMLike(), RidgePenalty(.1))\n\n\n\n\nTop\n\n\nSum\n\n\nTrack the running sum.  Ignores \nWeight\n.\n\n\no = Sum()\no = Sum(y)\n\n\n\n\nTop\n\n\nSums\n\n\nTrack the running sum for multiple series.  Ignores \nWeight\n.\n\n\no = Sums()\no = Sums(y)\n\n\n\n\nTop\n\n\nTwoWayInteractionMatrix\n\n\nAdd second-order interaction terms on the fly without creating or copying data:\n\n\n\n\nTwoWayInteractionMatrix(rand(n, p))\n \"adds\" the \nbinomial(p, 2)\n interaction terms to each row\n\n\n\n\nTop\n\n\nTwoWayInteractionVector\n\n\nAdd second-order interaction terms on the fly without creating or copying data:\n\n\n\n\nTwoWayInteractionVector(rand(p))\n \"adds\" the \nbinomial(p, 2)\n interaction terms\n\n\n\n\nTop\n\n\nVariance\n\n\nUnivariate variance.\n\n\ny = randn(100)\no = Variance(y)\nmean(o)\nvar(o)\nstd(o)\n\n\n\n\nTop\n\n\nVariances\n\n\nVariances of a multiple series, similar to \nvar(x, 1)\n.\n\n\no = Variances(x, EqualWeight())\no = Variances(x)\nfit!(o, x2)\n\nmean(o)\nvar(o)\nstd(o)\n\n\n\n\nTop\n\n\nfit!\n\n\nUpdate an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.\n\n\ny = randn(100)\no = Mean()\n\nfit!(o, y)      # standard usage\n\nfit!(o, y, 10)  # update in minibatches of size 10\n\nfit!(o, y, .1)  # update using weight .1 for each observation\n\nwts = rand(100)\nfit!(o, y, wts) # update observation i using wts[i]\n\n\n\n\nTop\n\n\nfitdistribution\n\n\nEstimate the parameters of a distribution.\n\n\nusing Distributions\n# Univariate distributions\no = fitdistribution(Beta, y)\no = fitdistribution(Categorical, y)  # ignores Weight\no = fitdistribution(Cauchy, y)\no = fitdistribution(Gamma, y)\no = fitdistribution(LogNormal, y)\no = fitdistribution(Normal, y)\nmean(o)\nvar(o)\nstd(o)\nparams(o)\n\n# Multivariate distributions\no = fitdistribution(Multinomial, x)\no = fitdistribution(MvNormal, x)\nmean(o)\nvar(o)\nstd(o)\ncov(o)\n\n\n\n\nTop\n\n\nmap_rows\n\n\nPerform operations on data in blocks.\n\n\nmap_rows(f::Function, b::Integer, data...)\n\n\nThis function iteratively feeds blocks of \ndata\n of size \nb\n observations to the function \nf\n.  The most common usage is with \ndo\n blocks:\n\n\n# Example 1\ny = randn(50)\no = Variance()\nmap_rows(10, y) do yi\n    fit!(o, yi)\n    println(\nUpdated with another batch!\n)\nend\n\n# Example 2\nx = randn(100, 5)\ny = randn(100)\no = LinReg(x, y)\nmap_rows(10, x, y) do xi, yi\n    fit!(o, xi, yi)\n    println(\nUpdated with another batch!\n)\nend\n\n\n\n\nTop\n\n\nnobs\n\n\nnobs(obj::StatisticalModel)\n\n\nReturns the number of independent observations on which the model was fitted. Be careful when using this information, as the definition of an independent observation may vary depending on the model, on the format used to pass the data, on the sampling plan (if specified), etc.\n\n\nTop\n\n\nsweep!\n\n\nsweep!(A, k, inv = false)\n, \nsweep!(A, k, v, inv = false)\n\n\nSymmetric sweep operator of the matrix \nA\n on element \nk\n.  \nA\n is overwritten. \ninv = true\n will perform the inverse sweep.  Only the upper triangle is read and swept.\n\n\nAn optional vector \nv\n can be provided to avoid memory allocation. This requires \nlength(v) == size(A, 1)\n.  Both \nA\n and \nv\n will be overwritten.\n\n\nx = randn(100, 10)\nxtx = x'x\nsweep!(xtx, 1)\nsweep!(xtx, 1, true)\n\n\n\n\nTop\n\n\nvalue\n\n\nThe associated value of an OnlineStat.\n\n\no = Mean()\nvalue(o)\n\n\n\n\nTop", 
+            "text": "API\n\n\nBernoulliBootstrap\n\n\nBernoulliBootstrap(o::OnlineStat, f::Function, r::Int = 1000)\n\n\nCreate a double-or-nothing bootstrap using \nr\n replicates of \no\n for estimate \nf(o)\n\n\nExample:\n\n\nBernoulliBootstrap\n(\nMean\n(),\n \nmean\n,\n \n1000\n)\n\n\n\n\n\n\nBiasMatrix\n\n\nAdda bias/intercept term to a matrix on the fly without creating or copying data:\n\n\n\n\nBiasMatrix(rand(10,5))\n is roughly equivalent to \nhcat(rand(10,5), ones(10))\n\n\n\n\nBiasVector\n\n\nAdd a bias/intercept term to a vector on the fly without creating or copying data:\n\n\n\n\nBiasVector(rand(10))\n is roughly equivalent to \nvcat(rand(10), 1.0)\n\n\n\n\nBoundedEqualWeight\n\n\nOne of the \nWeight\n types.  Uses \nEqualWeight\n until reaching \n\u03bb = 2 / (1 + lookback)\n, then weights are held constant.\n\n\n\n\nBoundedEqualWeight(\u03bb::Float64)\n\n\nBoundedEqualWeight(lookback::Int)\n\n\n\n\nCovMatrix\n\n\nCovariance matrix, similar to \ncov(x)\n.\n\n\no\n \n=\n \nCovMatrix\n(\nx\n,\n \nEqualWeight\n())\n\n\no\n \n=\n \nCovMatrix\n(\nx\n)\n\n\nfit\n!\n(\no\n,\n \nx2\n)\n\n\n\ncor\n(\no\n)\n\n\ncov\n(\no\n)\n\n\nmean\n(\no\n)\n\n\nvar\n(\no\n)\n\n\n\n\n\n\nDiff\n\n\nTrack the last value and the last difference.\n\n\no\n \n=\n \nDiff\n()\n\n\no\n \n=\n \nDiff\n(\ny\n)\n\n\n\n\n\n\nDiffs\n\n\nTrack the last value and the last difference for multiple series.  Ignores \nWeight\n.\n\n\no\n \n=\n \nDiffs\n()\n\n\no\n \n=\n \nDiffs\n(\ny\n)\n\n\n\n\n\n\nEqualWeight\n\n\nOne of the \nWeight\n types.  Observations are weighted equally.  For analytical updates, the online algorithm will give results equal to the offline version.\n\n\n\n\nEqualWeight()\n\n\n\n\nExponentialWeight\n\n\nOne of the \nWeight\n types.  Updates are performed with a constant weight \n\u03bb = 2 / (1 + lookback)\n.\n\n\n\n\nExponentialWeight(\u03bb::Float64)\n\n\nExponentialWeight(lookback::Int)\n\n\n\n\nExtrema\n\n\nExtrema (maximum and minimum).\n\n\no\n \n=\n \nExtrema\n(\ny\n)\n\n\nfit\n!\n(\no\n,\n \ny2\n)\n\n\nextrema\n(\no\n)\n\n\n\n\n\n\nFitCategorical\n\n\nFind the proportions for each unique input.  Categories are sorted by proportions. Ignores \nWeight\n.\n\n\no\n \n=\n \nFitCategorical\n(\ny\n)\n\n\n\n\n\n\nHyperLogLog\n\n\nHyperLogLog(b)\n\n\nApproximate count of distinct elements.  \nHyperLogLog\n differs from other OnlineStats in that any input to \nfit!(o::HyperLogLog, input)\n is considered a singleton.  Thus, a vector of inputs must be done by:\n\n\no\n \n=\n \nHyperLogLog\n(\n4\n)\n\n\nfor\n \nyi\n \nin\n \ny\n\n    \nfit\n!\n(\no\n,\n \nyi\n)\n\n\nend\n\n\n\n\n\n\nKMeans\n\n\nApproximate K-Means clustering of multivariate data.\n\n\no\n \n=\n \nKMeans\n(\ny\n,\n \n3\n,\n \nLearningRate\n())\n\n\nvalue\n(\no\n)\n\n\n\n\n\n\nLearningRate\n\n\nOne of the \nWeight\n types.  It's primary use is for the OnlineStats that use stochastic approximation (\nStatLearn\n, \nQuantReg\n, \nQuantileMM\n, \nQuantileSGD\n, \nNormalMix\n, and \nKMeans\n).  The weight at update \nt\n is \n1 / t ^ r\n.  When weights reach \n\u03bb\n, they are held consant.  Compare to \nLearningRate2\n.\n\n\n\n\nLearningRate(r = 0.5, \u03bb = 0.0)\n\n\n\n\nLearningRate2\n\n\nOne of the \nWeight\n types.  It's primary use is for the OnlineStats that use stochastic approximation (\nStatLearn\n, \nQuantReg\n, \nQuantileMM\n, \nQuantileSGD\n, \nNormalMix\n, and \nKMeans\n).  The weight at update \nt\n is \n1 / (1 + c * (t - 1))\n.  When weights reach \n\u03bb\n, they are held consant.  Compare to \nLearningRate\n.\n\n\n\n\nLearningRate2(c = 0.5, \u03bb = 0.0)\n\n\n\n\nLinReg\n\n\nAnalytical Linear Regression.\n\n\nWith \nEqualWeight\n, this is equivalent to offline linear regression.\n\n\nusing OnlineStats, StatsBase\no = LinReg(x, y, wgt = EqualWeight())\ncoef(o)\ncoeftable(o)\nvcov(o)\nstderr(o)\npredict(o, x)\nconfint(o, .95)\n\n\n\n\n\nMean\n\n\nMean of a single series.\n\n\ny\n \n=\n \nrandn\n(\n100\n)\n\n\no\n \n=\n \nMean\n()\n\n\nfit\n!\n(\no\n,\n \ny\n)\n\n\nmean\n(\no\n)\n  \n# return the mean\n\n\ncenter\n(\no\n,\n \n0.5\n)\n  \n# returns 0.5 - mean(o)\n\n\n\n\n\n\nMeans\n\n\nMeans of multiple series, similar to \nmean(x, 1)\n.\n\n\nx\n \n=\n \nrandn\n(\n1000\n,\n \n5\n)\n\n\no\n \n=\n \nMeans\n(\n5\n)\n\n\nfit\n!\n(\no\n,\n \nx\n)\n\n\nmean\n(\no\n)\n\n\n\n\n\n\nMoments\n\n\nUnivariate, first four moments.  Provides \nmean\n, \nvar\n, \nskewness\n, \nkurtosis\n\n\no\n \n=\n \nMoments\n(\nx\n,\n \nEqualWeight\n())\n\n\no\n \n=\n \nMoments\n(\nx\n)\n\n\nfit\n!\n(\no\n,\n \nx2\n)\n\n\n\nmean\n(\no\n)\n\n\nvar\n(\no\n)\n\n\nstd\n(\no\n)\n\n\nStatsBase\n.\nskewness\n(\no\n)\n\n\nStatsBase\n.\nkurtosis\n(\no\n)\n\n\n\n\n\n\nNormalMix\n\n\nNormal Mixture of \nk\n components via an online EM algorithm.  \nstart\n is a keyword argument specifying the initial parameters.\n\n\no\n \n=\n \nNormalMix\n(\n2\n,\n \nLearningRate\n();\n \nstart\n \n=\n \nMixtureModel\n(\nNormal\n,\n \n[(\n0\n,\n \n1\n),\n \n(\n3\n,\n \n1\n)]))\n\n\nmean\n(\no\n)\n\n\nvar\n(\no\n)\n\n\nstd\n(\no\n)\n\n\n\n\n\n\nQuantReg\n\n\nOnline MM Algorithm for Quantile Regression.\n\n\nQuantileMM\n\n\nApproximate quantiles via an online MM algorithm.  Typically more accurate than \nQuantileSGD\n.\n\n\no\n \n=\n \nQuantileMM\n(\ny\n,\n \nLearningRate\n())\n\n\no\n \n=\n \nQuantileMM\n(\ny\n,\n \ntau\n \n=\n \n[\n.\n25\n,\n \n.\n5\n,\n \n.\n75\n])\n\n\nfit\n!\n(\no\n,\n \ny2\n)\n\n\n\n\n\n\nQuantileSGD\n\n\nApproximate quantiles via stochastic gradient descent.\n\n\no\n \n=\n \nQuantileSGD\n(\ny\n,\n \nLearningRate\n())\n\n\no\n \n=\n \nQuantileSGD\n(\ny\n,\n \ntau\n \n=\n \n[\n.\n25\n,\n \n.\n5\n,\n \n.\n75\n])\n\n\nfit\n!\n(\no\n,\n \ny2\n)\n\n\n\n\n\n\nStatLearn\n\n\nOnline statistical learning algorithms.\n\n\n\n\nStatLearn(p)\n\n\nStatLearn(x, y)\n\n\nStatLearn(x, y, b)\n\n\n\n\nThe model is defined by:\n\n\nModelDefinition\n\n\n\n\nL2Regression()\n     - Squared error loss.  Default.\n\n\nL1Regression()\n     - Absolute loss\n\n\nLogisticRegression()\n     - Model for data in {0, 1}\n\n\nPoissonRegression()\n     - Model count data {0, 1, 2, 3, ...}\n\n\nQuantileRegression(\u03c4)\n     - Model conditional quantiles\n\n\nSVMLike()\n     - For data in {-1, 1}.  Perceptron with \nNoPenalty\n. SVM with \nRidgePenalty\n.\n\n\nHuberRegression(\u03b4)\n     - Robust Huber loss\n\n\n\n\nPenalty\n\n\n\n\nNoPenalty()\n     - No penalty.  Default.\n\n\nRidgePenalty(\u03bb)\n     - Ridge regularization: \ndot(\u03b2, \u03b2)\n\n\nLassoPenalty(\u03bb)\n     - Lasso regularization: \nsumabs(\u03b2)\n\n\nElasticNetPenalty(\u03bb, \u03b1)\n     - Ridge/LASSO weighted average.  \n\u03b1 = 0\n is Ridge, \n\u03b1 = 1\n is LASSO.\n\n\nSCADPenalty(\u03bb, a = 3.7)\n     - Smoothly clipped absolute deviation penalty.  Essentially LASSO with less bias     for larger coefficients.\n\n\n\n\nAlgorithm\n\n\n\n\nSGD()\n     - Stochastic gradient descent.  Default.\n\n\nAdaGrad()\n     - Adaptive gradient method. Ignores \nWeight\n.\n\n\nAdaDelta()\n     - Extension of AdaGrad.  Ignores \nWeight\n.\n\n\nRDA()\n     - Regularized dual averaging with ADAGRAD.  Ignores \nWeight\n.\n\n\nMMGrad()\n     - Experimental online MM gradient method.\n\n\n\n\nNote:\n The order of the \nModelDefinition\n, \nPenalty\n, and \nAlgorithm\n arguments don't matter.\n\n\nStatLearn\n(\nx\n,\n \ny\n)\n\n\nStatLearn\n(\nx\n,\n \ny\n,\n \nAdaGrad\n())\n\n\nStatLearn\n(\nx\n,\n \ny\n,\n \nMMGrad\n(),\n \nLearningRate\n(\n.\n5\n))\n\n\nStatLearn\n(\nx\n,\n \ny\n,\n \n10\n,\n \nLearningRate\n(\n.\n7\n),\n \nRDA\n(),\n \nSVMLike\n(),\n \nRidgePenalty\n(\n.\n1\n))\n\n\n\n\n\n\nSum\n\n\nTrack the running sum.  Ignores \nWeight\n.\n\n\no\n \n=\n \nSum\n()\n\n\no\n \n=\n \nSum\n(\ny\n)\n\n\n\n\n\n\nSums\n\n\nTrack the running sum for multiple series.  Ignores \nWeight\n.\n\n\no\n \n=\n \nSums\n()\n\n\no\n \n=\n \nSums\n(\ny\n)\n\n\n\n\n\n\nTwoWayInteractionMatrix\n\n\nAdd second-order interaction terms on the fly without creating or copying data:\n\n\n\n\nTwoWayInteractionMatrix(rand(n, p))\n \"adds\" the \nbinomial(p, 2)\n interaction terms to each row\n\n\n\n\nTwoWayInteractionVector\n\n\nAdd second-order interaction terms on the fly without creating or copying data:\n\n\n\n\nTwoWayInteractionVector(rand(p))\n \"adds\" the \nbinomial(p, 2)\n interaction terms\n\n\n\n\nVariance\n\n\nUnivariate variance.\n\n\ny\n \n=\n \nrandn\n(\n100\n)\n\n\no\n \n=\n \nVariance\n(\ny\n)\n\n\nmean\n(\no\n)\n\n\nvar\n(\no\n)\n\n\nstd\n(\no\n)\n\n\n\n\n\n\nVariances\n\n\nVariances of a multiple series, similar to \nvar(x, 1)\n.\n\n\no\n \n=\n \nVariances\n(\nx\n,\n \nEqualWeight\n())\n\n\no\n \n=\n \nVariances\n(\nx\n)\n\n\nfit\n!\n(\no\n,\n \nx2\n)\n\n\n\nmean\n(\no\n)\n\n\nvar\n(\no\n)\n\n\nstd\n(\no\n)\n\n\n\n\n\n\nfit!\n\n\nUpdate an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.\n\n\ny = randn(100)\no = Mean()\n\nfit!(o, y)      # standard usage\n\nfit!(o, y, 10)  # update in minibatches of size 10\n\nfit!(o, y, .1)  # update using weight .1 for each observation\n\nwts = rand(100)\nfit!(o, y, wts) # update observation i using wts[i]\n\n\n\n\n\nfitdistribution\n\n\nEstimate the parameters of a distribution.\n\n\nusing\n \nDistributions\n\n\n# Univariate distributions\n\n\no\n \n=\n \nfitdistribution\n(\nBeta\n,\n \ny\n)\n\n\no\n \n=\n \nfitdistribution\n(\nCategorical\n,\n \ny\n)\n  \n# ignores Weight\n\n\no\n \n=\n \nfitdistribution\n(\nCauchy\n,\n \ny\n)\n\n\no\n \n=\n \nfitdistribution\n(\nGamma\n,\n \ny\n)\n\n\no\n \n=\n \nfitdistribution\n(\nLogNormal\n,\n \ny\n)\n\n\no\n \n=\n \nfitdistribution\n(\nNormal\n,\n \ny\n)\n\n\nmean\n(\no\n)\n\n\nvar\n(\no\n)\n\n\nstd\n(\no\n)\n\n\nparams\n(\no\n)\n\n\n\n# Multivariate distributions\n\n\no\n \n=\n \nfitdistribution\n(\nMultinomial\n,\n \nx\n)\n\n\no\n \n=\n \nfitdistribution\n(\nMvNormal\n,\n \nx\n)\n\n\nmean\n(\no\n)\n\n\nvar\n(\no\n)\n\n\nstd\n(\no\n)\n\n\ncov\n(\no\n)\n\n\n\n\n\n\nmap_rows\n\n\nPerform operations on data in blocks.\n\n\nmap_rows(f::Function, b::Integer, data...)\n\n\nThis function iteratively feeds blocks of \ndata\n of size \nb\n observations to the function \nf\n.  The most common usage is with \ndo\n blocks:\n\n\n# Example 1\n\n\ny\n \n=\n \nrandn\n(\n50\n)\n\n\no\n \n=\n \nVariance\n()\n\n\nmap_rows\n(\n10\n,\n \ny\n)\n \ndo\n \nyi\n\n    \nfit\n!\n(\no\n,\n \nyi\n)\n\n    \nprintln\n(\nUpdated with another batch!\n)\n\n\nend\n\n\n\n# Example 2\n\n\nx\n \n=\n \nrandn\n(\n100\n,\n \n5\n)\n\n\ny\n \n=\n \nrandn\n(\n100\n)\n\n\no\n \n=\n \nLinReg\n(\nx\n,\n \ny\n)\n\n\nmap_rows\n(\n10\n,\n \nx\n,\n \ny\n)\n \ndo\n \nxi\n,\n \nyi\n\n    \nfit\n!\n(\no\n,\n \nxi\n,\n \nyi\n)\n\n    \nprintln\n(\nUpdated with another batch!\n)\n\n\nend\n\n\n\n\n\n\nnobs\n\n\nnobs(obj::StatisticalModel)\n\n\nReturns the number of independent observations on which the model was fitted. Be careful when using this information, as the definition of an independent observation may vary depending on the model, on the format used to pass the data, on the sampling plan (if specified), etc.\n\n\nsweep!\n\n\nsweep!(A, k, inv = false)\n, \nsweep!(A, k, v, inv = false)\n\n\nSymmetric sweep operator of the matrix \nA\n on element \nk\n.  \nA\n is overwritten. \ninv = true\n will perform the inverse sweep.  Only the upper triangle is read and swept.\n\n\nAn optional vector \nv\n can be provided to avoid memory allocation. This requires \nlength(v) == size(A, 1)\n.  Both \nA\n and \nv\n will be overwritten.\n\n\nx\n \n=\n \nrandn\n(\n100\n,\n \n10\n)\n\n\nxtx\n \n=\n \nx\nx\n\n\nsweep\n!\n(\nxtx\n,\n \n1\n)\n\n\nsweep\n!\n(\nxtx\n,\n \n1\n,\n \ntrue\n)\n\n\n\n\n\n\nvalue\n\n\nThe associated value of an OnlineStat.\n\n\no = Mean()\nvalue(o)", 
             "title": "API/Examples"
         }, 
         {
@@ -67,117 +67,117 @@
         }, 
         {
             "location": "/api/#bernoullibootstrap", 
-            "text": "BernoulliBootstrap(o::OnlineStat, f::Function, r::Int = 1000)  Create a double-or-nothing bootstrap using  r  replicates of  o  for estimate  f(o)  Example:  BernoulliBootstrap(Mean(), mean, 1000)  Top", 
+            "text": "BernoulliBootstrap(o::OnlineStat, f::Function, r::Int = 1000)  Create a double-or-nothing bootstrap using  r  replicates of  o  for estimate  f(o)  Example:  BernoulliBootstrap ( Mean (),   mean ,   1000 )", 
             "title": "BernoulliBootstrap"
         }, 
         {
             "location": "/api/#biasmatrix", 
-            "text": "Adda bias/intercept term to a matrix on the fly without creating or copying data:   BiasMatrix(rand(10,5))  is roughly equivalent to  hcat(rand(10,5), ones(10))   Top", 
+            "text": "Adda bias/intercept term to a matrix on the fly without creating or copying data:   BiasMatrix(rand(10,5))  is roughly equivalent to  hcat(rand(10,5), ones(10))", 
             "title": "BiasMatrix"
         }, 
         {
             "location": "/api/#biasvector", 
-            "text": "Add a bias/intercept term to a vector on the fly without creating or copying data:   BiasVector(rand(10))  is roughly equivalent to  vcat(rand(10), 1.0)   Top", 
+            "text": "Add a bias/intercept term to a vector on the fly without creating or copying data:   BiasVector(rand(10))  is roughly equivalent to  vcat(rand(10), 1.0)", 
             "title": "BiasVector"
         }, 
         {
             "location": "/api/#boundedequalweight", 
-            "text": "One of the  Weight  types.  Uses  EqualWeight  until reaching  \u03bb = 2 / (1 + lookback) , then weights are held constant.   BoundedEqualWeight(\u03bb::Float64)  BoundedEqualWeight(lookback::Int)   Top", 
+            "text": "One of the  Weight  types.  Uses  EqualWeight  until reaching  \u03bb = 2 / (1 + lookback) , then weights are held constant.   BoundedEqualWeight(\u03bb::Float64)  BoundedEqualWeight(lookback::Int)", 
             "title": "BoundedEqualWeight"
         }, 
         {
             "location": "/api/#covmatrix", 
-            "text": "Covariance matrix, similar to  cov(x) .  o = CovMatrix(x, EqualWeight())\no = CovMatrix(x)\nfit!(o, x2)\n\ncor(o)\ncov(o)\nmean(o)\nvar(o)  Top", 
+            "text": "Covariance matrix, similar to  cov(x) .  o   =   CovMatrix ( x ,   EqualWeight ())  o   =   CovMatrix ( x )  fit ! ( o ,   x2 )  cor ( o )  cov ( o )  mean ( o )  var ( o )", 
             "title": "CovMatrix"
         }, 
         {
             "location": "/api/#diff", 
-            "text": "Track the last value and the last difference.  o = Diff()\no = Diff(y)  Top", 
+            "text": "Track the last value and the last difference.  o   =   Diff ()  o   =   Diff ( y )", 
             "title": "Diff"
         }, 
         {
             "location": "/api/#diffs", 
-            "text": "Track the last value and the last difference for multiple series.  Ignores  Weight .  o = Diffs()\no = Diffs(y)  Top", 
+            "text": "Track the last value and the last difference for multiple series.  Ignores  Weight .  o   =   Diffs ()  o   =   Diffs ( y )", 
             "title": "Diffs"
         }, 
         {
             "location": "/api/#equalweight", 
-            "text": "One of the  Weight  types.  Observations are weighted equally.  For analytical updates, the online algorithm will give results equal to the offline version.   EqualWeight()   Top", 
+            "text": "One of the  Weight  types.  Observations are weighted equally.  For analytical updates, the online algorithm will give results equal to the offline version.   EqualWeight()", 
             "title": "EqualWeight"
         }, 
         {
             "location": "/api/#exponentialweight", 
-            "text": "One of the  Weight  types.  Updates are performed with a constant weight  \u03bb = 2 / (1 + lookback) .   ExponentialWeight(\u03bb::Float64)  ExponentialWeight(lookback::Int)   Top", 
+            "text": "One of the  Weight  types.  Updates are performed with a constant weight  \u03bb = 2 / (1 + lookback) .   ExponentialWeight(\u03bb::Float64)  ExponentialWeight(lookback::Int)", 
             "title": "ExponentialWeight"
         }, 
         {
             "location": "/api/#extrema", 
-            "text": "Extrema (maximum and minimum).  o = Extrema(y)\nfit!(o, y2)\nextrema(o)  Top", 
+            "text": "Extrema (maximum and minimum).  o   =   Extrema ( y )  fit ! ( o ,   y2 )  extrema ( o )", 
             "title": "Extrema"
         }, 
         {
             "location": "/api/#fitcategorical", 
-            "text": "Find the proportions for each unique input.  Categories are sorted by proportions. Ignores  Weight .  o = FitCategorical(y)  Top", 
+            "text": "Find the proportions for each unique input.  Categories are sorted by proportions. Ignores  Weight .  o   =   FitCategorical ( y )", 
             "title": "FitCategorical"
         }, 
         {
             "location": "/api/#hyperloglog", 
-            "text": "HyperLogLog(b)  Approximate count of distinct elements.   HyperLogLog  differs from other OnlineStats in that any input to  fit!(o::HyperLogLog, input)  is considered a singleton.  Thus, a vector of inputs must be done by:  o = HyperLogLog(4)\nfor yi in y\n    fit!(o, yi)\nend  Top", 
+            "text": "HyperLogLog(b)  Approximate count of distinct elements.   HyperLogLog  differs from other OnlineStats in that any input to  fit!(o::HyperLogLog, input)  is considered a singleton.  Thus, a vector of inputs must be done by:  o   =   HyperLogLog ( 4 )  for   yi   in   y \n     fit ! ( o ,   yi )  end", 
             "title": "HyperLogLog"
         }, 
         {
             "location": "/api/#kmeans", 
-            "text": "Approximate K-Means clustering of multivariate data.  o = KMeans(y, 3, LearningRate())\nvalue(o)  Top", 
+            "text": "Approximate K-Means clustering of multivariate data.  o   =   KMeans ( y ,   3 ,   LearningRate ())  value ( o )", 
             "title": "KMeans"
         }, 
         {
             "location": "/api/#learningrate", 
-            "text": "One of the  Weight  types.  It's primary use is for the OnlineStats that use stochastic approximation ( StatLearn ,  QuantReg ,  QuantileMM ,  QuantileSGD ,  NormalMix , and  KMeans ).  The weight at update  t  is  1 / t ^ r .  When weights reach  \u03bb , they are held consant.  Compare to  LearningRate2 .   LearningRate(r = 0.5, \u03bb = 0.0)   Top", 
+            "text": "One of the  Weight  types.  It's primary use is for the OnlineStats that use stochastic approximation ( StatLearn ,  QuantReg ,  QuantileMM ,  QuantileSGD ,  NormalMix , and  KMeans ).  The weight at update  t  is  1 / t ^ r .  When weights reach  \u03bb , they are held consant.  Compare to  LearningRate2 .   LearningRate(r = 0.5, \u03bb = 0.0)", 
             "title": "LearningRate"
         }, 
         {
             "location": "/api/#learningrate2", 
-            "text": "One of the  Weight  types.  It's primary use is for the OnlineStats that use stochastic approximation ( StatLearn ,  QuantReg ,  QuantileMM ,  QuantileSGD ,  NormalMix , and  KMeans ).  The weight at update  t  is  1 / (1 + c * (t - 1)) .  When weights reach  \u03bb , they are held consant.  Compare to  LearningRate .   LearningRate2(c = 0.5, \u03bb = 0.0)   Top", 
+            "text": "One of the  Weight  types.  It's primary use is for the OnlineStats that use stochastic approximation ( StatLearn ,  QuantReg ,  QuantileMM ,  QuantileSGD ,  NormalMix , and  KMeans ).  The weight at update  t  is  1 / (1 + c * (t - 1)) .  When weights reach  \u03bb , they are held consant.  Compare to  LearningRate .   LearningRate2(c = 0.5, \u03bb = 0.0)", 
             "title": "LearningRate2"
         }, 
         {
             "location": "/api/#linreg", 
-            "text": "Analytical Linear Regression.  With  EqualWeight , this is equivalent to offline linear regression.  using OnlineStats, StatsBase\no = LinReg(x, y, wgt = EqualWeight())\ncoef(o)\ncoeftable(o)\nvcov(o)\nstderr(o)\npredict(o, x)\nconfint(o, .95)  Top", 
+            "text": "Analytical Linear Regression.  With  EqualWeight , this is equivalent to offline linear regression.  using OnlineStats, StatsBase\no = LinReg(x, y, wgt = EqualWeight())\ncoef(o)\ncoeftable(o)\nvcov(o)\nstderr(o)\npredict(o, x)\nconfint(o, .95)", 
             "title": "LinReg"
         }, 
         {
             "location": "/api/#mean", 
-            "text": "Mean of a single series.  y = randn(100)\no = Mean()\nfit!(o, y)\nmean(o)  # return the mean\ncenter(o, 0.5)  # returns 0.5 - mean(o)  Top", 
+            "text": "Mean of a single series.  y   =   randn ( 100 )  o   =   Mean ()  fit ! ( o ,   y )  mean ( o )    # return the mean  center ( o ,   0.5 )    # returns 0.5 - mean(o)", 
             "title": "Mean"
         }, 
         {
             "location": "/api/#means", 
-            "text": "Means of multiple series, similar to  mean(x, 1) .  x = randn(1000, 5)\no = Means(5)\nfit!(o, x)\nmean(o)  Top", 
+            "text": "Means of multiple series, similar to  mean(x, 1) .  x   =   randn ( 1000 ,   5 )  o   =   Means ( 5 )  fit ! ( o ,   x )  mean ( o )", 
             "title": "Means"
         }, 
         {
             "location": "/api/#moments", 
-            "text": "Univariate, first four moments.  Provides  mean ,  var ,  skewness ,  kurtosis  o = Moments(x, EqualWeight())\no = Moments(x)\nfit!(o, x2)\n\nmean(o)\nvar(o)\nstd(o)\nStatsBase.skewness(o)\nStatsBase.kurtosis(o)  Top", 
+            "text": "Univariate, first four moments.  Provides  mean ,  var ,  skewness ,  kurtosis  o   =   Moments ( x ,   EqualWeight ())  o   =   Moments ( x )  fit ! ( o ,   x2 )  mean ( o )  var ( o )  std ( o )  StatsBase . skewness ( o )  StatsBase . kurtosis ( o )", 
             "title": "Moments"
         }, 
         {
             "location": "/api/#normalmix", 
-            "text": "Normal Mixture of  k  components via an online EM algorithm.   start  is a keyword argument specifying the initial parameters.  o = NormalMix(2, LearningRate(); start = MixtureModel(Normal, [(0, 1), (3, 1)]))\nmean(o)\nvar(o)\nstd(o)  Top", 
+            "text": "Normal Mixture of  k  components via an online EM algorithm.   start  is a keyword argument specifying the initial parameters.  o   =   NormalMix ( 2 ,   LearningRate ();   start   =   MixtureModel ( Normal ,   [( 0 ,   1 ),   ( 3 ,   1 )]))  mean ( o )  var ( o )  std ( o )", 
             "title": "NormalMix"
         }, 
         {
             "location": "/api/#quantreg", 
-            "text": "Online MM Algorithm for Quantile Regression.  Top", 
+            "text": "Online MM Algorithm for Quantile Regression.", 
             "title": "QuantReg"
         }, 
         {
             "location": "/api/#quantilemm", 
-            "text": "Approximate quantiles via an online MM algorithm.  Typically more accurate than  QuantileSGD .  o = QuantileMM(y, LearningRate())\no = QuantileMM(y, tau = [.25, .5, .75])\nfit!(o, y2)  Top", 
+            "text": "Approximate quantiles via an online MM algorithm.  Typically more accurate than  QuantileSGD .  o   =   QuantileMM ( y ,   LearningRate ())  o   =   QuantileMM ( y ,   tau   =   [ . 25 ,   . 5 ,   . 75 ])  fit ! ( o ,   y2 )", 
             "title": "QuantileMM"
         }, 
         {
             "location": "/api/#quantilesgd", 
-            "text": "Approximate quantiles via stochastic gradient descent.  o = QuantileSGD(y, LearningRate())\no = QuantileSGD(y, tau = [.25, .5, .75])\nfit!(o, y2)  Top", 
+            "text": "Approximate quantiles via stochastic gradient descent.  o   =   QuantileSGD ( y ,   LearningRate ())  o   =   QuantileSGD ( y ,   tau   =   [ . 25 ,   . 5 ,   . 75 ])  fit ! ( o ,   y2 )", 
             "title": "QuantileSGD"
         }, 
         {
@@ -197,72 +197,72 @@
         }, 
         {
             "location": "/api/#algorithm", 
-            "text": "SGD()      - Stochastic gradient descent.  Default.  AdaGrad()      - Adaptive gradient method. Ignores  Weight .  AdaDelta()      - Extension of AdaGrad.  Ignores  Weight .  RDA()      - Regularized dual averaging with ADAGRAD.  Ignores  Weight .  MMGrad()      - Experimental online MM gradient method.   Note:  The order of the  ModelDefinition ,  Penalty , and  Algorithm  arguments don't matter.  StatLearn(x, y)\nStatLearn(x, y, AdaGrad())\nStatLearn(x, y, MMGrad(), LearningRate(.5))\nStatLearn(x, y, 10, LearningRate(.7), RDA(), SVMLike(), RidgePenalty(.1))  Top", 
+            "text": "SGD()      - Stochastic gradient descent.  Default.  AdaGrad()      - Adaptive gradient method. Ignores  Weight .  AdaDelta()      - Extension of AdaGrad.  Ignores  Weight .  RDA()      - Regularized dual averaging with ADAGRAD.  Ignores  Weight .  MMGrad()      - Experimental online MM gradient method.   Note:  The order of the  ModelDefinition ,  Penalty , and  Algorithm  arguments don't matter.  StatLearn ( x ,   y )  StatLearn ( x ,   y ,   AdaGrad ())  StatLearn ( x ,   y ,   MMGrad (),   LearningRate ( . 5 ))  StatLearn ( x ,   y ,   10 ,   LearningRate ( . 7 ),   RDA (),   SVMLike (),   RidgePenalty ( . 1 ))", 
             "title": "Algorithm"
         }, 
         {
             "location": "/api/#sum", 
-            "text": "Track the running sum.  Ignores  Weight .  o = Sum()\no = Sum(y)  Top", 
+            "text": "Track the running sum.  Ignores  Weight .  o   =   Sum ()  o   =   Sum ( y )", 
             "title": "Sum"
         }, 
         {
             "location": "/api/#sums", 
-            "text": "Track the running sum for multiple series.  Ignores  Weight .  o = Sums()\no = Sums(y)  Top", 
+            "text": "Track the running sum for multiple series.  Ignores  Weight .  o   =   Sums ()  o   =   Sums ( y )", 
             "title": "Sums"
         }, 
         {
             "location": "/api/#twowayinteractionmatrix", 
-            "text": "Add second-order interaction terms on the fly without creating or copying data:   TwoWayInteractionMatrix(rand(n, p))  \"adds\" the  binomial(p, 2)  interaction terms to each row   Top", 
+            "text": "Add second-order interaction terms on the fly without creating or copying data:   TwoWayInteractionMatrix(rand(n, p))  \"adds\" the  binomial(p, 2)  interaction terms to each row", 
             "title": "TwoWayInteractionMatrix"
         }, 
         {
             "location": "/api/#twowayinteractionvector", 
-            "text": "Add second-order interaction terms on the fly without creating or copying data:   TwoWayInteractionVector(rand(p))  \"adds\" the  binomial(p, 2)  interaction terms   Top", 
+            "text": "Add second-order interaction terms on the fly without creating or copying data:   TwoWayInteractionVector(rand(p))  \"adds\" the  binomial(p, 2)  interaction terms", 
             "title": "TwoWayInteractionVector"
         }, 
         {
             "location": "/api/#variance", 
-            "text": "Univariate variance.  y = randn(100)\no = Variance(y)\nmean(o)\nvar(o)\nstd(o)  Top", 
+            "text": "Univariate variance.  y   =   randn ( 100 )  o   =   Variance ( y )  mean ( o )  var ( o )  std ( o )", 
             "title": "Variance"
         }, 
         {
             "location": "/api/#variances", 
-            "text": "Variances of a multiple series, similar to  var(x, 1) .  o = Variances(x, EqualWeight())\no = Variances(x)\nfit!(o, x2)\n\nmean(o)\nvar(o)\nstd(o)  Top", 
+            "text": "Variances of a multiple series, similar to  var(x, 1) .  o   =   Variances ( x ,   EqualWeight ())  o   =   Variances ( x )  fit ! ( o ,   x2 )  mean ( o )  var ( o )  std ( o )", 
             "title": "Variances"
         }, 
         {
             "location": "/api/#fit", 
-            "text": "Update an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.  y = randn(100)\no = Mean()\n\nfit!(o, y)      # standard usage\n\nfit!(o, y, 10)  # update in minibatches of size 10\n\nfit!(o, y, .1)  # update using weight .1 for each observation\n\nwts = rand(100)\nfit!(o, y, wts) # update observation i using wts[i]  Top", 
+            "text": "Update an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.  y = randn(100)\no = Mean()\n\nfit!(o, y)      # standard usage\n\nfit!(o, y, 10)  # update in minibatches of size 10\n\nfit!(o, y, .1)  # update using weight .1 for each observation\n\nwts = rand(100)\nfit!(o, y, wts) # update observation i using wts[i]", 
             "title": "fit!"
         }, 
         {
             "location": "/api/#fitdistribution", 
-            "text": "Estimate the parameters of a distribution.  using Distributions\n# Univariate distributions\no = fitdistribution(Beta, y)\no = fitdistribution(Categorical, y)  # ignores Weight\no = fitdistribution(Cauchy, y)\no = fitdistribution(Gamma, y)\no = fitdistribution(LogNormal, y)\no = fitdistribution(Normal, y)\nmean(o)\nvar(o)\nstd(o)\nparams(o)\n\n# Multivariate distributions\no = fitdistribution(Multinomial, x)\no = fitdistribution(MvNormal, x)\nmean(o)\nvar(o)\nstd(o)\ncov(o)  Top", 
+            "text": "Estimate the parameters of a distribution.  using   Distributions  # Univariate distributions  o   =   fitdistribution ( Beta ,   y )  o   =   fitdistribution ( Categorical ,   y )    # ignores Weight  o   =   fitdistribution ( Cauchy ,   y )  o   =   fitdistribution ( Gamma ,   y )  o   =   fitdistribution ( LogNormal ,   y )  o   =   fitdistribution ( Normal ,   y )  mean ( o )  var ( o )  std ( o )  params ( o )  # Multivariate distributions  o   =   fitdistribution ( Multinomial ,   x )  o   =   fitdistribution ( MvNormal ,   x )  mean ( o )  var ( o )  std ( o )  cov ( o )", 
             "title": "fitdistribution"
         }, 
         {
             "location": "/api/#map_rows", 
-            "text": "Perform operations on data in blocks.  map_rows(f::Function, b::Integer, data...)  This function iteratively feeds blocks of  data  of size  b  observations to the function  f .  The most common usage is with  do  blocks:  # Example 1\ny = randn(50)\no = Variance()\nmap_rows(10, y) do yi\n    fit!(o, yi)\n    println( Updated with another batch! )\nend\n\n# Example 2\nx = randn(100, 5)\ny = randn(100)\no = LinReg(x, y)\nmap_rows(10, x, y) do xi, yi\n    fit!(o, xi, yi)\n    println( Updated with another batch! )\nend  Top", 
+            "text": "Perform operations on data in blocks.  map_rows(f::Function, b::Integer, data...)  This function iteratively feeds blocks of  data  of size  b  observations to the function  f .  The most common usage is with  do  blocks:  # Example 1  y   =   randn ( 50 )  o   =   Variance ()  map_rows ( 10 ,   y )   do   yi \n     fit ! ( o ,   yi ) \n     println ( Updated with another batch! )  end  # Example 2  x   =   randn ( 100 ,   5 )  y   =   randn ( 100 )  o   =   LinReg ( x ,   y )  map_rows ( 10 ,   x ,   y )   do   xi ,   yi \n     fit ! ( o ,   xi ,   yi ) \n     println ( Updated with another batch! )  end", 
             "title": "map_rows"
         }, 
         {
             "location": "/api/#nobs", 
-            "text": "nobs(obj::StatisticalModel)  Returns the number of independent observations on which the model was fitted. Be careful when using this information, as the definition of an independent observation may vary depending on the model, on the format used to pass the data, on the sampling plan (if specified), etc.  Top", 
+            "text": "nobs(obj::StatisticalModel)  Returns the number of independent observations on which the model was fitted. Be careful when using this information, as the definition of an independent observation may vary depending on the model, on the format used to pass the data, on the sampling plan (if specified), etc.", 
             "title": "nobs"
         }, 
         {
             "location": "/api/#sweep", 
-            "text": "sweep!(A, k, inv = false) ,  sweep!(A, k, v, inv = false)  Symmetric sweep operator of the matrix  A  on element  k .   A  is overwritten.  inv = true  will perform the inverse sweep.  Only the upper triangle is read and swept.  An optional vector  v  can be provided to avoid memory allocation. This requires  length(v) == size(A, 1) .  Both  A  and  v  will be overwritten.  x = randn(100, 10)\nxtx = x'x\nsweep!(xtx, 1)\nsweep!(xtx, 1, true)  Top", 
+            "text": "sweep!(A, k, inv = false) ,  sweep!(A, k, v, inv = false)  Symmetric sweep operator of the matrix  A  on element  k .   A  is overwritten.  inv = true  will perform the inverse sweep.  Only the upper triangle is read and swept.  An optional vector  v  can be provided to avoid memory allocation. This requires  length(v) == size(A, 1) .  Both  A  and  v  will be overwritten.  x   =   randn ( 100 ,   10 )  xtx   =   x x  sweep ! ( xtx ,   1 )  sweep ! ( xtx ,   1 ,   true )", 
             "title": "sweep!"
         }, 
         {
             "location": "/api/#value", 
-            "text": "The associated value of an OnlineStat.  o = Mean()\nvalue(o)  Top", 
+            "text": "The associated value of an OnlineStat.  o = Mean()\nvalue(o)", 
             "title": "value"
         }, 
         {
             "location": "/StatLearn/", 
-            "text": "StatLearn\n\n\nApproximate solutions to statistical learning problems using online algorithms.  \nStatLearn\n has extremely fast fitting times.\n\n\nStatLearn is parameterized by three types:\n\n\nModelDefinition\n\n\n\n\nL2Regression()\n\n\nSquared error loss.  Default.\n\n\n\n\n\n\nL1Regression()\n\n\nAbsolute loss\n\n\n\n\n\n\nLogisticRegression()\n\n\nModel for data in {0, 1}\n\n\n\n\n\n\nPoissonRegression()\n\n\nModel count data {0, 1, 2, 3, ...}\n\n\n\n\n\n\nQuantileRegression(\u03c4)\n\n\nModel conditional quantiles\n\n\n\n\n\n\nSVMLike()\n\n\nWith \nNoPenalty\n, this is a perceptron.  With \nRidgePenalty\n, this is a support vector machine.\n\n\n\n\n\n\nHuberRegression(\u03b4)\n\n\nRobust Huber loss\n\n\n\n\n\n\n\n\nPenalty\n\n\n\n\nNoPenalty()\n\n\nNo penalty.  Default.\n\n\n\n\n\n\nRidgePenalty(\u03bb)\n\n\nRidge regularization\n\n\n\n\n\n\nLassoPenalty(\u03bb)\n\n\nLASSO regularization\n\n\n\n\n\n\nElasticNetPenalty(\u03bb, \u03b1)\n\n\nWeighted average of Ridge and LASSO.  \n\u03b1 = 0\n is Ridge, \n\u03b1 = 1\n is LASSO.\n\n\n\n\n\n\n\n\nAlgorithm\n\n\n\n\nSGD()\n\n\nStochastic gradient descent.  Default.\n\n\n\n\n\n\nAdaGrad()\n\n\nAdaptive gradient method. Ignores \nWeight\n.\n\n\n\n\n\n\nAdaDelta()\n\n\nEssentially AdaGrad with momentum and altered Hessian approximation.  Ignores \nWeight\n.\n\n\n\n\n\n\nRDA()\n\n\nRegularized dual averaging with ADAGRAD.  Ignores \nWeight\n.\n\n\n\n\n\n\nMMGrad()\n\n\nExperimental online MM gradient method.\n\n\n\n\n\n\n\n\nLearning rates and batch sizes matter\n\n\nUsing mini-batches, gradient estimates are less noisy.  The trade-off,\nof course, is that fewer updates occur.\n\n\no1 = StatLearn(x, y, SGD(), LearningRate(.6))  # batch size = 1\no2 = StatLearn(x, y, 10, LearningRate(.6), SGD())     # batch size = 10\n\n\n\n\nNote\n: The order of of \nWeight\n, \nAlgorithm\n, \nModelDefinition\n, and \nPenalty\n arguments don't matter.", 
+            "text": "StatLearn\n\n\nApproximate solutions to statistical learning problems using online algorithms.  \nStatLearn\n has extremely fast fitting times.\n\n\nStatLearn is parameterized by three types:\n\n\nModelDefinition\n\n\n\n\nL2Regression()\n\n\nSquared error loss.  Default.\n\n\n\n\n\n\nL1Regression()\n\n\nAbsolute loss\n\n\n\n\n\n\nLogisticRegression()\n\n\nModel for data in {0, 1}\n\n\n\n\n\n\nPoissonRegression()\n\n\nModel count data {0, 1, 2, 3, ...}\n\n\n\n\n\n\nQuantileRegression(\u03c4)\n\n\nModel conditional quantiles\n\n\n\n\n\n\nSVMLike()\n\n\nWith \nNoPenalty\n, this is a perceptron.  With \nRidgePenalty\n, this is a support vector machine.\n\n\n\n\n\n\nHuberRegression(\u03b4)\n\n\nRobust Huber loss\n\n\n\n\n\n\n\n\nPenalty\n\n\n\n\nNoPenalty()\n\n\nNo penalty.  Default.\n\n\n\n\n\n\nRidgePenalty(\u03bb)\n\n\nRidge regularization\n\n\n\n\n\n\nLassoPenalty(\u03bb)\n\n\nLASSO regularization\n\n\n\n\n\n\nElasticNetPenalty(\u03bb, \u03b1)\n\n\nWeighted average of Ridge and LASSO.  \n\u03b1 = 0\n is Ridge, \n\u03b1 = 1\n is LASSO.\n\n\n\n\n\n\n\n\nAlgorithm\n\n\n\n\nSGD()\n\n\nStochastic gradient descent.  Default.\n\n\n\n\n\n\nAdaGrad()\n\n\nAdaptive gradient method. Ignores \nWeight\n.\n\n\n\n\n\n\nAdaDelta()\n\n\nEssentially AdaGrad with momentum and altered Hessian approximation.  Ignores \nWeight\n.\n\n\n\n\n\n\nRDA()\n\n\nRegularized dual averaging with ADAGRAD.  Ignores \nWeight\n.\n\n\n\n\n\n\nMMGrad()\n\n\nExperimental online MM gradient method.\n\n\n\n\n\n\n\n\nLearning rates and batch sizes matter\n\n\nUsing mini-batches, gradient estimates are less noisy.  The trade-off,\nof course, is that fewer updates occur.\n\n\no1\n \n=\n \nStatLearn\n(\nx\n,\n \ny\n,\n \nSGD\n(),\n \nLearningRate\n(\n.\n6\n))\n  \n# batch size = 1\n\n\no2\n \n=\n \nStatLearn\n(\nx\n,\n \ny\n,\n \n10\n,\n \nLearningRate\n(\n.\n6\n),\n \nSGD\n())\n     \n# batch size = 10\n\n\n\n\n\n\nNote\n: The order of of \nWeight\n, \nAlgorithm\n, \nModelDefinition\n, and \nPenalty\n arguments don't matter.", 
             "title": "Predictive Modeling"
         }, 
         {
@@ -292,7 +292,7 @@
         }, 
         {
             "location": "/StatLearn/#learning-rates-and-batch-sizes-matter", 
-            "text": "Using mini-batches, gradient estimates are less noisy.  The trade-off,\nof course, is that fewer updates occur.  o1 = StatLearn(x, y, SGD(), LearningRate(.6))  # batch size = 1\no2 = StatLearn(x, y, 10, LearningRate(.6), SGD())     # batch size = 10  Note : The order of of  Weight ,  Algorithm ,  ModelDefinition , and  Penalty  arguments don't matter.", 
+            "text": "Using mini-batches, gradient estimates are less noisy.  The trade-off,\nof course, is that fewer updates occur.  o1   =   StatLearn ( x ,   y ,   SGD (),   LearningRate ( . 6 ))    # batch size = 1  o2   =   StatLearn ( x ,   y ,   10 ,   LearningRate ( . 6 ),   SGD ())       # batch size = 10   Note : The order of of  Weight ,  Algorithm ,  ModelDefinition , and  Penalty  arguments don't matter.", 
             "title": "Learning rates and batch sizes matter"
         }
     ]

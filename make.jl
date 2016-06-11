@@ -4,7 +4,7 @@ using OnlineStats
 
 rootdir = Pkg.dir("OnlineStats")
 
-# Generate api.md
+#-------------------------------------------------------------------# Generate api.md
 api = rootdir * "/doc/api.md"
 rm(api)
 touch(api)
@@ -18,11 +18,12 @@ for nm in nms
     d = Docs.doc(obj)
     if d != nothing
         println(nm)
-        write(file, "## " * string(nm) * "\n" * Markdown.plain(d) * "\n[Top](#api)\n")
+        write(file, "## " * string(nm) * "\n" * Markdown.plain(d) * "\n")
     end
 end
 close(file)
 
+#-------------------------------------------------------------# push site to gh-pages
 cd(rootdir)
 run(`mkdocs gh-deploy --clean`)
 end  # MakeOnlineStatsDocs

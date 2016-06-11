@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>Predictive Modeling - OnlineStats.jl Documentation</title>
+        <title>Predictive Modeling - OnlineStats.jl</title>
       
       
       
@@ -20,9 +20,9 @@
       
     
     <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/StatLearn/">
-    <meta property="og:title" content="OnlineStats.jl Documentation">
+    <meta property="og:title" content="OnlineStats.jl">
     <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/StatLearn//../">
-    <meta name="apple-mobile-web-app-title" content="OnlineStats.jl Documentation">
+    <meta name="apple-mobile-web-app-title" content="OnlineStats.jl">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
@@ -47,8 +47,6 @@
     </style>
     <link rel="stylesheet" href="../assets/stylesheets/application-0dac3e5884.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/palettes-05ab2406df.css">
-    
     
       
       
@@ -70,7 +68,7 @@
   
   
   
-  <body class="palette-primary-indigo ">
+  <body class=" ">
     
     <div class="backdrop">
       <div class="backdrop-paper"></div>
@@ -97,6 +95,11 @@
       </div>
     </div>
     
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/joshday" title="@joshday on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
     
     <div class="button button-search" role="button" aria-label="Search">
       <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
@@ -127,7 +130,7 @@
       
       <div class="name">
         <strong>
-          OnlineStats.jl Documentation
+          OnlineStats.jl
           <span class="version">
             
           </span>
@@ -191,6 +194,20 @@
 
           
         </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+            
+              
+              <li>
+                <a href="https://github.com/joshday" target="_blank" title="@joshday on GitHub">
+                  @joshday on GitHub
+                </a>
+              </li>
+            
+          </ul>
         
       </div>
     </div>
@@ -279,9 +296,10 @@
 <h2 id="learning-rates-and-batch-sizes-matter">Learning rates and batch sizes matter</h2>
 <p>Using mini-batches, gradient estimates are less noisy.  The trade-off,
 of course, is that fewer updates occur.</p>
-<pre><code class="julia">o1 = StatLearn(x, y, SGD(), LearningRate(.6))  # batch size = 1
-o2 = StatLearn(x, y, 10, LearningRate(.6), SGD())     # batch size = 10
-</code></pre>
+<div class="code"><pre><span class="n">o1</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">))</span>  <span class="c"># batch size = 1</span>
+<span class="n">o2</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">),</span> <span class="n">SGD</span><span class="p">())</span>     <span class="c"># batch size = 10</span>
+</pre></div>
+
 
 <p><strong>Note</strong>: The order of of <code>Weight</code>, <code>Algorithm</code>, <code>ModelDefinition</code>, and <code>Penalty</code> arguments don't matter.</p>
           <aside class="copyright" role="note">
