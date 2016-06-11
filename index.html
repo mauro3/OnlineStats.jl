@@ -235,19 +235,13 @@
 
 <h3 id="all-onlinestats-can-be-updated">All OnlineStats can be updated</h3>
 <div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
-<span class="c"># update Mean</span>
 <span class="k">for</span> <span class="n">yi</span> <span class="k">in</span> <span class="n">y</span>
-    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
-<span class="k">end</span>
-<span class="k">for</span> <span class="n">yi</span> <span class="k">in</span> <span class="n">y2</span>
-    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">end</span>
 
 <span class="c"># or more simply:</span>
 <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
 </pre></div>
 
 
@@ -263,7 +257,7 @@
 type rely on stochastic approximation.</p>
 <h3 id="summary-statistics">Summary Statistics</h3>
 <ul>
-<li>Mean: <code>Mean</code>, <code>Means</code></li>
+<li>Mean: <a href="./../api/#mean"><code>Mean</code></a>, <code>Means</code></li>
 <li>Variance: <code>Variance</code>, <code>Variances</code></li>
 <li>Quantiles: <code>QuantileMM</code>, <code>QuantileSGD</code></li>
 <li>Covariance Matrix: <code>CovMatrix</code></li>
