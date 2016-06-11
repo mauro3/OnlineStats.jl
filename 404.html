@@ -25,7 +25,7 @@
         
     </head>
 
-    <body class="homepage">
+    <body>
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -53,7 +53,7 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
+                    <li >
                         <a href=".">Home</a>
                     </li>
                 
@@ -79,8 +79,8 @@
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="api/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -93,113 +93,15 @@
 
         <div class="container">
             
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-    
-        <li class="main active"><a href="#onlinestatsjl">OnlineStats.jl</a></li>
-        
-    
-        <li class="main "><a href="#overview">Overview</a></li>
-        
-            <li><a href="#every-onlinestat-is-a-type">Every OnlineStat is a Type</a></li>
-        
-            <li><a href="#all-onlinestats-can-be-updated">All OnlineStats can be updated</a></li>
-        
-            <li><a href="#onlinestats-share-a-common-interface">OnlineStats share a common interface</a></li>
-        
-    
-        <li class="main "><a href="#what-can-onlinestats-do">What Can OnlineStats Do?</a></li>
-        
-            <li><a href="#summary-statistics">Summary Statistics</a></li>
-        
-            <li><a href="#density-estimation">Density Estimation</a></li>
-        
-            <li><a href="#predictive-modeling">Predictive Modeling</a></li>
-        
-            <li><a href="#experimental-features">Experimental Features</a></li>
-        
-    
-    </ul>
-</div></div>
-                <div class="col-md-9" role="main">
 
-<h1 id="onlinestatsjl">OnlineStats.jl</h1>
-<p><strong>OnlineStats</strong> is a Julia package which provides online algorithms for statistical models.</p>
-<p>Online algorithms are well suited for streaming data or when data is too large to hold in memory.</p>
-<p>Observations are processed one at a time and all <strong>algorithms use O(1) memory</strong>.</p>
-<h1 id="overview">Overview</h1>
-<h3 id="every-onlinestat-is-a-type">Every OnlineStat is a Type</h3>
-<pre><code class="julia">using OnlineStats
-o = Mean()
-</code></pre>
+    <div class="row-fluid">
+      <div id="main-content" class="span12">
+        <h1 id="404-page-not-found" style="text-align: center">404</h1>
+        <p style="text-align: center"><strong>Page not found</strong></p>
+      </div>
+    </div>
 
-<h3 id="all-onlinestats-can-be-updated">All OnlineStats can be updated</h3>
-<pre><code class="julia">y = randn(100)
-y2 = randn(100)
 
-# update Mean
-for yi in y
-    fit!(o, yi)
-end
-for yi in y2
-    fit!(o, yi)
-end
-
-# or more simply:
-fit!(o, y)
-fit!(o, y2)
-</code></pre>
-
-<h3 id="onlinestats-share-a-common-interface">OnlineStats share a common interface</h3>
-<ul>
-<li><code>value(o)</code><ul>
-<li>the associated value of an OnlineStat</li>
-</ul>
-</li>
-<li><code>nobs(o)</code><ul>
-<li>the number of observations seen</li>
-</ul>
-</li>
-</ul>
-<h1 id="what-can-onlinestats-do">What Can OnlineStats Do?</h1>
-<p>While many estimates can be calculated analytically with an online algorithm, several
-type rely on stochastic approximation.</p>
-<h3 id="summary-statistics">Summary Statistics</h3>
-<ul>
-<li>Mean: <code>Mean</code>, <code>Means</code></li>
-<li>Variance: <code>Variance</code>, <code>Variances</code></li>
-<li>Quantiles: <code>QuantileMM</code>, <code>QuantileSGD</code></li>
-<li>Covariance Matrix: <code>CovMatrix</code></li>
-<li>Maximum and Minimum:  <code>Extrema</code></li>
-<li>Skewness and Kurtosis:  <code>Moments</code></li>
-<li>Sum/Differences:  <code>Sum</code>, <code>Sums</code>, <code>Diff</code>, <code>Diffs</code></li>
-</ul>
-<h3 id="density-estimation">Density Estimation</h3>
-<ul>
-<li><code>distributionfit(D, data)</code><ul>
-<li>For <code>D in [Beta, Categorical, Cauchy, Gamma, LogNormal, Normal, Multinomial, MvNormal]</code></li>
-</ul>
-</li>
-<li>Gaussian Mixtures: <code>NormalMix</code></li>
-</ul>
-<h3 id="predictive-modeling">Predictive Modeling</h3>
-<ul>
-<li>Linear Regression: <code>LinReg</code>, <code>StatLearn</code></li>
-<li>Logistic Regression: <code>StatLearn</code></li>
-<li>Poisson Regression: <code>StatLearn</code></li>
-<li>Support Vector Machines: <code>StatLearn</code></li>
-<li>Quantile Regression: <code>StatLearn</code>, <code>QuantReg</code></li>
-<li>Huber Loss Regression: <code>StatLearn</code></li>
-<li>L1 Loss Regression: <code>StatLearn</code></li>
-</ul>
-<h3 id="experimental-features">Experimental Features</h3>
-<ul>
-<li>K-Means clustering: <code>KMeans</code></li>
-<li>Bootstrapping: <code>BernoulliBootstrap</code>, <code>PoissonBootstrap</code></li>
-<li>Approximate count of distinct elements: <code>HyperLogLog</code></li>
-<li>Visualizing value of OnlineStats: <code>TracePlot</code>, <code>CompareTracePlot</code></li>
-</ul></div>
-            
         </div>
 
         <footer class="col-md-12">
@@ -242,8 +144,3 @@ type rely on stochastic approximation.</p>
 
     </body>
 </html>
-
-<!--
-MkDocs version : 0.15.3
-Build Date UTC : 2016-06-11 21:11:47.203292
--->

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>API - OnlineStats.jl</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">OnlineStats.jl</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">API</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#api">API</a></li>
+        
+    
+        <li class="main "><a href="#bernoullibootstrap">BernoulliBootstrap</a></li>
+        
+    
+        <li class="main "><a href="#biasmatrix">BiasMatrix</a></li>
+        
+    
+        <li class="main "><a href="#biasvector">BiasVector</a></li>
+        
+    
+        <li class="main "><a href="#boundedequalweight">BoundedEqualWeight</a></li>
+        
+    
+        <li class="main "><a href="#covmatrix">CovMatrix</a></li>
+        
+    
+        <li class="main "><a href="#diff">Diff</a></li>
+        
+    
+        <li class="main "><a href="#diffs">Diffs</a></li>
+        
+    
+        <li class="main "><a href="#equalweight">EqualWeight</a></li>
+        
+    
+        <li class="main "><a href="#exponentialweight">ExponentialWeight</a></li>
+        
+    
+        <li class="main "><a href="#extrema">Extrema</a></li>
+        
+    
+        <li class="main "><a href="#fitcategorical">FitCategorical</a></li>
+        
+    
+        <li class="main "><a href="#hyperloglog">HyperLogLog</a></li>
+        
+    
+        <li class="main "><a href="#kmeans">KMeans</a></li>
+        
+    
+        <li class="main "><a href="#learningrate">LearningRate</a></li>
+        
+    
+        <li class="main "><a href="#learningrate2">LearningRate2</a></li>
+        
+    
+        <li class="main "><a href="#linreg">LinReg</a></li>
+        
+    
+        <li class="main "><a href="#mean">Mean</a></li>
+        
+    
+        <li class="main "><a href="#means">Means</a></li>
+        
+    
+        <li class="main "><a href="#moments">Moments</a></li>
+        
+    
+        <li class="main "><a href="#normalmix">NormalMix</a></li>
+        
+    
+        <li class="main "><a href="#quantreg">QuantReg</a></li>
+        
+    
+        <li class="main "><a href="#quantilemm">QuantileMM</a></li>
+        
+    
+        <li class="main "><a href="#quantilesgd">QuantileSGD</a></li>
+        
+    
+        <li class="main "><a href="#statlearn">StatLearn</a></li>
+        
+            <li><a href="#modeldefinition">ModelDefinition</a></li>
+        
+            <li><a href="#penalty">Penalty</a></li>
+        
+            <li><a href="#algorithm">Algorithm</a></li>
+        
+    
+        <li class="main "><a href="#sum">Sum</a></li>
+        
+    
+        <li class="main "><a href="#sums">Sums</a></li>
+        
+    
+        <li class="main "><a href="#twowayinteractionmatrix">TwoWayInteractionMatrix</a></li>
+        
+    
+        <li class="main "><a href="#twowayinteractionvector">TwoWayInteractionVector</a></li>
+        
+    
+        <li class="main "><a href="#variance">Variance</a></li>
+        
+    
+        <li class="main "><a href="#variances">Variances</a></li>
+        
+    
+        <li class="main "><a href="#fit">fit!</a></li>
+        
+    
+        <li class="main "><a href="#fitdistribution">fitdistribution</a></li>
+        
+    
+        <li class="main "><a href="#map_rows">map_rows</a></li>
+        
+    
+        <li class="main "><a href="#nobs">nobs</a></li>
+        
+    
+        <li class="main "><a href="#sweep">sweep!</a></li>
+        
+    
+        <li class="main "><a href="#value">value</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<!--- This file was generated at 2016-06-11T16:45:50.  Do not edit by hand --->
+
+<h1 id="api">API</h1>
+<h1 id="bernoullibootstrap">BernoulliBootstrap</h1>
+<p><code>BernoulliBootstrap(o::OnlineStat, f::Function, r::Int = 1000)</code></p>
+<p>Create a double-or-nothing bootstrap using <code>r</code> replicates of <code>o</code> for estimate <code>f(o)</code></p>
+<p>Example:</p>
+<pre><code class="julia">BernoulliBootstrap(Mean(), mean, 1000)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="biasmatrix">BiasMatrix</h1>
+<p>Adda bias/intercept term to a matrix on the fly without creating or copying data:</p>
+<ul>
+<li><code>BiasMatrix(rand(10,5))</code> is roughly equivalent to <code>hcat(rand(10,5), ones(10))</code></li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="biasvector">BiasVector</h1>
+<p>Add a bias/intercept term to a vector on the fly without creating or copying data:</p>
+<ul>
+<li><code>BiasVector(rand(10))</code> is roughly equivalent to <code>vcat(rand(10), 1.0)</code></li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="boundedequalweight">BoundedEqualWeight</h1>
+<p>One of the <code>Weight</code> types.  Uses <code>EqualWeight</code> until reaching <code>λ = 2 / (1 + lookback)</code>, then weights are held constant.</p>
+<ul>
+<li><code>BoundedEqualWeight(λ::Float64)</code></li>
+<li><code>BoundedEqualWeight(lookback::Int)</code></li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="covmatrix">CovMatrix</h1>
+<p>Covariance matrix, similar to <code>cov(x)</code>.</p>
+<pre><code class="julia">o = CovMatrix(x, EqualWeight())
+o = CovMatrix(x)
+fit!(o, x2)
+
+cor(o)
+cov(o)
+mean(o)
+var(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="diff">Diff</h1>
+<p>Track the last value and the last difference.</p>
+<pre><code class="julia">o = Diff()
+o = Diff(y)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="diffs">Diffs</h1>
+<p>Track the last value and the last difference for multiple series.  Ignores <code>Weight</code>.</p>
+<pre><code class="julia">o = Diffs()
+o = Diffs(y)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="equalweight">EqualWeight</h1>
+<p>One of the <code>Weight</code> types.  Observations are weighted equally.  For analytical updates, the online algorithm will give results equal to the offline version.</p>
+<ul>
+<li><code>EqualWeight()</code></li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="exponentialweight">ExponentialWeight</h1>
+<p>One of the <code>Weight</code> types.  Updates are performed with a constant weight <code>λ = 2 / (1 + lookback)</code>.</p>
+<ul>
+<li><code>ExponentialWeight(λ::Float64)</code></li>
+<li><code>ExponentialWeight(lookback::Int)</code></li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="extrema">Extrema</h1>
+<p>Extrema (maximum and minimum).</p>
+<pre><code class="julia">o = Extrema(y)
+fit!(o, y2)
+extrema(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="fitcategorical">FitCategorical</h1>
+<p>Find the proportions for each unique input.  Categories are sorted by proportions. Ignores <code>Weight</code>.</p>
+<pre><code class="julia">o = FitCategorical(y)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="hyperloglog">HyperLogLog</h1>
+<p><code>HyperLogLog(b)</code></p>
+<p>Approximate count of distinct elements.  <code>HyperLogLog</code> differs from other OnlineStats in that any input to <code>fit!(o::HyperLogLog, input)</code> is considered a singleton.  Thus, a vector of inputs must be done by:</p>
+<pre><code class="julia">o = HyperLogLog(4)
+for yi in y
+    fit!(o, yi)
+end
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="kmeans">KMeans</h1>
+<p>Approximate K-Means clustering of multivariate data.</p>
+<pre><code class="julia">o = KMeans(y, 3, LearningRate())
+value(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="learningrate">LearningRate</h1>
+<p>One of the <code>Weight</code> types.  It's primary use is for the OnlineStats that use stochastic approximation (<code>StatLearn</code>, <code>QuantReg</code>, <code>QuantileMM</code>, <code>QuantileSGD</code>, <code>NormalMix</code>, and <code>KMeans</code>).  The weight at update <code>t</code> is <code>1 / t ^ r</code>.  When weights reach <code>λ</code>, they are held consant.  Compare to <code>LearningRate2</code>.</p>
+<ul>
+<li><code>LearningRate(r = 0.5, λ = 0.0)</code></li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="learningrate2">LearningRate2</h1>
+<p>One of the <code>Weight</code> types.  It's primary use is for the OnlineStats that use stochastic approximation (<code>StatLearn</code>, <code>QuantReg</code>, <code>QuantileMM</code>, <code>QuantileSGD</code>, <code>NormalMix</code>, and <code>KMeans</code>).  The weight at update <code>t</code> is <code>1 / (1 + c * (t - 1))</code>.  When weights reach <code>λ</code>, they are held consant.  Compare to <code>LearningRate</code>.</p>
+<ul>
+<li><code>LearningRate2(c = 0.5, λ = 0.0)</code></li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="linreg">LinReg</h1>
+<p>Analytical Linear Regression.</p>
+<p>With <code>EqualWeight</code>, this is equivalent to offline linear regression.</p>
+<pre><code>using OnlineStats, StatsBase
+o = LinReg(x, y, wgt = EqualWeight())
+coef(o)
+coeftable(o)
+vcov(o)
+stderr(o)
+predict(o, x)
+confint(o, .95)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="mean">Mean</h1>
+<p>Mean of a single series.</p>
+<pre><code class="julia">y = randn(100)
+o = Mean()
+fit!(o, y)
+mean(o)  # return the mean
+center(o, 0.5)  # returns 0.5 - mean(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="means">Means</h1>
+<p>Means of multiple series, similar to <code>mean(x, 1)</code>.</p>
+<pre><code class="julia">x = randn(1000, 5)
+o = Means(5)
+fit!(o, x)
+mean(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="moments">Moments</h1>
+<p>Univariate, first four moments.  Provides <code>mean</code>, <code>var</code>, <code>skewness</code>, <code>kurtosis</code></p>
+<pre><code class="julia">o = Moments(x, EqualWeight())
+o = Moments(x)
+fit!(o, x2)
+
+mean(o)
+var(o)
+std(o)
+StatsBase.skewness(o)
+StatsBase.kurtosis(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="normalmix">NormalMix</h1>
+<p>Normal Mixture of <code>k</code> components via an online EM algorithm.  <code>start</code> is a keyword argument specifying the initial parameters.</p>
+<pre><code class="julia">o = NormalMix(2, LearningRate(); start = MixtureModel(Normal, [(0, 1), (3, 1)]))
+mean(o)
+var(o)
+std(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="quantreg">QuantReg</h1>
+<p>Online MM Algorithm for Quantile Regression.</p>
+<p><a href="#api">Top</a></p>
+<h1 id="quantilemm">QuantileMM</h1>
+<p>Approximate quantiles via an online MM algorithm.  Typically more accurate than <code>QuantileSGD</code>.</p>
+<pre><code class="julia">o = QuantileMM(y, LearningRate())
+o = QuantileMM(y, tau = [.25, .5, .75])
+fit!(o, y2)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="quantilesgd">QuantileSGD</h1>
+<p>Approximate quantiles via stochastic gradient descent.</p>
+<pre><code class="julia">o = QuantileSGD(y, LearningRate())
+o = QuantileSGD(y, tau = [.25, .5, .75])
+fit!(o, y2)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="statlearn">StatLearn</h1>
+<p>Online statistical learning algorithms.</p>
+<ul>
+<li><code>StatLearn(p)</code></li>
+<li><code>StatLearn(x, y)</code></li>
+<li><code>StatLearn(x, y, b)</code></li>
+</ul>
+<p>The model is defined by:</p>
+<h4 id="modeldefinition"><code>ModelDefinition</code></h4>
+<ul>
+<li><code>L2Regression()</code>     - Squared error loss.  Default.</li>
+<li><code>L1Regression()</code>     - Absolute loss</li>
+<li><code>LogisticRegression()</code>     - Model for data in {0, 1}</li>
+<li><code>PoissonRegression()</code>     - Model count data {0, 1, 2, 3, ...}</li>
+<li><code>QuantileRegression(τ)</code>     - Model conditional quantiles</li>
+<li><code>SVMLike()</code>     - For data in {-1, 1}.  Perceptron with <code>NoPenalty</code>. SVM with <code>RidgePenalty</code>.</li>
+<li><code>HuberRegression(δ)</code>     - Robust Huber loss</li>
+</ul>
+<h4 id="penalty"><code>Penalty</code></h4>
+<ul>
+<li><code>NoPenalty()</code>     - No penalty.  Default.</li>
+<li><code>RidgePenalty(λ)</code>     - Ridge regularization: <code>dot(β, β)</code></li>
+<li><code>LassoPenalty(λ)</code>     - Lasso regularization: <code>sumabs(β)</code></li>
+<li><code>ElasticNetPenalty(λ, α)</code>     - Ridge/LASSO weighted average.  <code>α = 0</code> is Ridge, <code>α = 1</code> is LASSO.</li>
+<li><code>SCADPenalty(λ, a = 3.7)</code>     - Smoothly clipped absolute deviation penalty.  Essentially LASSO with less bias     for larger coefficients.</li>
+</ul>
+<h4 id="algorithm"><code>Algorithm</code></h4>
+<ul>
+<li><code>SGD()</code>     - Stochastic gradient descent.  Default.</li>
+<li><code>AdaGrad()</code>     - Adaptive gradient method. Ignores <code>Weight</code>.</li>
+<li><code>AdaDelta()</code>     - Extension of AdaGrad.  Ignores <code>Weight</code>.</li>
+<li><code>RDA()</code>     - Regularized dual averaging with ADAGRAD.  Ignores <code>Weight</code>.</li>
+<li><code>MMGrad()</code>     - Experimental online MM gradient method.</li>
+</ul>
+<p><strong>Note:</strong> The order of the <code>ModelDefinition</code>, <code>Penalty</code>, and <code>Algorithm</code> arguments don't matter.</p>
+<pre><code class="julia">StatLearn(x, y)
+StatLearn(x, y, AdaGrad())
+StatLearn(x, y, MMGrad(), LearningRate(.5))
+StatLearn(x, y, 10, LearningRate(.7), RDA(), SVMLike(), RidgePenalty(.1))
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="sum">Sum</h1>
+<p>Track the running sum.  Ignores <code>Weight</code>.</p>
+<pre><code class="julia">o = Sum()
+o = Sum(y)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="sums">Sums</h1>
+<p>Track the running sum for multiple series.  Ignores <code>Weight</code>.</p>
+<pre><code class="julia">o = Sums()
+o = Sums(y)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="twowayinteractionmatrix">TwoWayInteractionMatrix</h1>
+<p>Add second-order interaction terms on the fly without creating or copying data:</p>
+<ul>
+<li><code>TwoWayInteractionMatrix(rand(n, p))</code> "adds" the <code>binomial(p, 2)</code> interaction terms to each row</li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="twowayinteractionvector">TwoWayInteractionVector</h1>
+<p>Add second-order interaction terms on the fly without creating or copying data:</p>
+<ul>
+<li><code>TwoWayInteractionVector(rand(p))</code> "adds" the <code>binomial(p, 2)</code> interaction terms</li>
+</ul>
+<p><a href="#api">Top</a></p>
+<h1 id="variance">Variance</h1>
+<p>Univariate variance.</p>
+<pre><code class="julia">y = randn(100)
+o = Variance(y)
+mean(o)
+var(o)
+std(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="variances">Variances</h1>
+<p>Variances of a multiple series, similar to <code>var(x, 1)</code>.</p>
+<pre><code class="julia">o = Variances(x, EqualWeight())
+o = Variances(x)
+fit!(o, x2)
+
+mean(o)
+var(o)
+std(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="fit">fit!</h1>
+<p>Update an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.</p>
+<pre><code>y = randn(100)
+o = Mean()
+
+fit!(o, y)      # standard usage
+
+fit!(o, y, 10)  # update in minibatches of size 10
+
+fit!(o, y, .1)  # update using weight .1 for each observation
+
+wts = rand(100)
+fit!(o, y, wts) # update observation i using wts[i]
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="fitdistribution">fitdistribution</h1>
+<p>Estimate the parameters of a distribution.</p>
+<pre><code class="julia">using Distributions
+# Univariate distributions
+o = fitdistribution(Beta, y)
+o = fitdistribution(Categorical, y)  # ignores Weight
+o = fitdistribution(Cauchy, y)
+o = fitdistribution(Gamma, y)
+o = fitdistribution(LogNormal, y)
+o = fitdistribution(Normal, y)
+mean(o)
+var(o)
+std(o)
+params(o)
+
+# Multivariate distributions
+o = fitdistribution(Multinomial, x)
+o = fitdistribution(MvNormal, x)
+mean(o)
+var(o)
+std(o)
+cov(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="map_rows">map_rows</h1>
+<p>Perform operations on data in blocks.</p>
+<p><code>map_rows(f::Function, b::Integer, data...)</code></p>
+<p>This function iteratively feeds the <code>f</code> blocks of <code>b</code> observations from <code>data</code>. The most common usage is with <code>do</code> blocks:</p>
+<pre><code class="julia"># Example 1
+y = randn(50)
+o = Variance()
+map_rows(10, y) do yi
+    fit!(o, yi)
+    println(&quot;Updated with another batch!&quot;)
+end
+display(o)
+
+# Example 2
+x = randn(100, 5)
+y = randn(100)
+o = LinReg(x, y)
+map_rows(10, x, y) do xi, yi
+    fit!(o, xi, yi)
+    println(&quot;Updated with another batch!&quot;)
+end
+display(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="nobs">nobs</h1>
+<p>nobs(obj::StatisticalModel)</p>
+<p>Returns the number of independent observations on which the model was fitted. Be careful when using this information, as the definition of an independent observation may vary depending on the model, on the format used to pass the data, on the sampling plan (if specified), etc.</p>
+<p><a href="#api">Top</a></p>
+<h1 id="sweep">sweep!</h1>
+<p><code>sweep!(A, k, inv = false)</code>, <code>sweep!(A, k, v, inv = false)</code></p>
+<p>Symmetric sweep operator of the matrix <code>A</code> on element <code>k</code>.  <code>A</code> is overwritten. <code>inv = true</code> will perform the inverse sweep.  Only the upper triangle is read and swept.</p>
+<p>An optional vector <code>v</code> can be provided to avoid memory allocation. This requires <code>length(v) == size(A, 1)</code>.  Both <code>A</code> and <code>v</code> will be overwritten.</p>
+<pre><code class="julia">x = randn(100, 10)
+xtx = x'x
+sweep!(xtx, 1)
+sweep!(xtx, 1, true)
+</code></pre>
+
+<p><a href="#api">Top</a></p>
+<h1 id="value">value</h1>
+<p>The associated value of an OnlineStat.</p>
+<pre><code>o = Mean()
+value(o)
+</code></pre>
+
+<p><a href="#api">Top</a></p></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
