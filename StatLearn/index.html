@@ -9,47 +9,45 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>OnlineStats.jl Documentation - Online Statistics for Julia</title>
+        <title>Predictive Modeling - OnlineStats.jl Documentation</title>
       
       
-        <meta name="description" content="Online Statistics for Julia">
       
-      
-        <link rel="canonical" href="https://joshday.github.io/OnlineStats.jl/">
+        <link rel="canonical" href="https://joshday.github.io/OnlineStats.jl/StatLearn/">
       
       
         <meta name="author" content="Josh Day">
       
     
-    <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/">
+    <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/StatLearn/">
     <meta property="og:title" content="OnlineStats.jl Documentation">
-    <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl//./">
+    <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/StatLearn//../">
     <meta name="apple-mobile-web-app-title" content="OnlineStats.jl Documentation">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     
-    <link rel="shortcut icon" type="image/x-icon" href="./None">
-    <link rel="icon" type="image/x-icon" href="./None">
+    <link rel="shortcut icon" type="image/x-icon" href="../None">
+    <link rel="icon" type="image/x-icon" href="../None">
     <style>
       @font-face {
       	font-family: 'Icon';
-      	src: url('./assets/fonts/icon.eot?52m981');
-      	src: url('./assets/fonts/icon.eot?#iefix52m981')
+      	src: url('../assets/fonts/icon.eot?52m981');
+      	src: url('../assets/fonts/icon.eot?#iefix52m981')
                format('embedded-opentype'),
-      		   url('./assets/fonts/icon.woff?52m981')
+      		   url('../assets/fonts/icon.woff?52m981')
                format('woff'),
-      		   url('./assets/fonts/icon.ttf?52m981')
+      		   url('../assets/fonts/icon.ttf?52m981')
                format('truetype'),
-      		   url('./assets/fonts/icon.svg?52m981#icon')
+      		   url('../assets/fonts/icon.svg?52m981#icon')
                format('svg');
       	font-weight: normal;
       	font-style: normal;
       }
     </style>
-    <link rel="stylesheet" href="./assets/stylesheets/application-0dac3e5884.css">
+    <link rel="stylesheet" href="../assets/stylesheets/application-0dac3e5884.css">
     
-      <link rel="stylesheet" href="./assets/stylesheets/palettes-05ab2406df.css">
+      <link rel="stylesheet" href="../assets/stylesheets/palettes-05ab2406df.css">
     
     
       
@@ -66,7 +64,7 @@
       </style>
     
     
-    <script src="./assets/javascripts/modernizr-4ab42b99fd.js"></script>
+    <script src="../assets/javascripts/modernizr-4ab42b99fd.js"></script>
     
   </head>
   
@@ -95,7 +93,7 @@
             
           </span>
         
-        OnlineStats.jl Documentation
+        Predictive Modeling
       </div>
     </div>
     
@@ -146,8 +144,26 @@
           
             
   <li>
-    <a class="current" title="Home" href=".">
+    <a class="" title="Home" href="..">
       Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="API/Examples" href="../api/">
+      API/Examples
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="current" title="Predictive Modeling" href="./">
+      Predictive Modeling
     </a>
     
       
@@ -157,37 +173,19 @@
         <ul>
           
             <li class="anchor">
-              <a title="Overview" href="#overview">
-                Overview
+              <a title="StatLearn is parameterized by three types:" href="#statlearn-is-parameterized-by-three-types">
+                StatLearn is parameterized by three types:
               </a>
             </li>
           
             <li class="anchor">
-              <a title="What Can OnlineStats Do?" href="#what-can-onlinestats-do">
-                What Can OnlineStats Do?
+              <a title="Learning rates and batch sizes matter" href="#learning-rates-and-batch-sizes-matter">
+                Learning rates and batch sizes matter
               </a>
             </li>
           
         </ul>
       
-    
-  </li>
-
-          
-            
-  <li>
-    <a class="" title="API/Examples" href="api/">
-      API/Examples
-    </a>
-    
-  </li>
-
-          
-            
-  <li>
-    <a class="" title="Predictive Modeling" href="StatLearn/">
-      Predictive Modeling
-    </a>
     
   </li>
 
@@ -202,77 +200,90 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="onlinestatsjl">OnlineStats.jl</h1>
-<p><strong>OnlineStats</strong> is a Julia package which provides online algorithms for statistical models.</p>
-<p>Online algorithms are well suited for streaming data or when data is too large to hold in memory.</p>
-<p>Observations are processed one at a time and all <strong>algorithms use O(1) memory</strong>.</p>
-<hr />
-<h2 id="overview">Overview</h2>
-<h3 id="every-onlinestat-is-a-type">Every OnlineStat is a Type</h3>
-<pre><code class="julia">using OnlineStats
-o = Mean()
-</code></pre>
-
-<h3 id="all-onlinestats-can-be-updated">All OnlineStats can be updated</h3>
-<pre><code class="julia">y = randn(100)
-y2 = randn(100)
-
-# update Mean
-for yi in y
-    fit!(o, yi)
-end
-for yi in y2
-    fit!(o, yi)
-end
-
-# or more simply:
-fit!(o, y)
-fit!(o, y2)
-</code></pre>
-
-<h3 id="onlinestats-share-a-common-interface">OnlineStats share a common interface</h3>
-<pre><code class="julia">value(o)  # associated value of an OnlineStat
-nobs(o)   # number of observations used
-</code></pre>
-
-<hr />
-<h2 id="what-can-onlinestats-do">What Can OnlineStats Do?</h2>
-<p>While many estimates can be calculated analytically with an online algorithm, several
-type rely on stochastic approximation.</p>
-<h3 id="summary-statistics">Summary Statistics</h3>
+          <h1 id="statlearn">StatLearn</h1>
+<p>Approximate solutions to statistical learning problems using online algorithms.  <code>StatLearn</code> has extremely fast fitting times.</p>
+<h2 id="statlearn-is-parameterized-by-three-types">StatLearn is parameterized by three types:</h2>
+<h3 id="modeldefinition">ModelDefinition</h3>
 <ul>
-<li>Mean: <code>Mean</code>, <code>Means</code></li>
-<li>Variance: <code>Variance</code>, <code>Variances</code></li>
-<li>Quantiles: <code>QuantileMM</code>, <code>QuantileSGD</code></li>
-<li>Covariance Matrix: <code>CovMatrix</code></li>
-<li>Maximum and Minimum:  <code>Extrema</code></li>
-<li>Skewness and Kurtosis:  <code>Moments</code></li>
-<li>Sum/Differences:  <code>Sum</code>, <code>Sums</code>, <code>Diff</code>, <code>Diffs</code></li>
-</ul>
-<h3 id="density-estimation">Density Estimation</h3>
-<ul>
-<li><code>distributionfit(D, data)</code><ul>
-<li>For <code>D in [Beta, Categorical, Cauchy, Gamma, LogNormal, Normal, Multinomial, MvNormal]</code></li>
+<li><code>L2Regression()</code><ul>
+<li>Squared error loss.  Default.</li>
 </ul>
 </li>
-<li>Gaussian Mixtures: <code>NormalMix</code></li>
+<li><code>L1Regression()</code><ul>
+<li>Absolute loss</li>
 </ul>
-<h3 id="predictive-modeling">Predictive Modeling</h3>
+</li>
+<li><code>LogisticRegression()</code><ul>
+<li>Model for data in {0, 1}</li>
+</ul>
+</li>
+<li><code>PoissonRegression()</code><ul>
+<li>Model count data {0, 1, 2, 3, ...}</li>
+</ul>
+</li>
+<li><code>QuantileRegression(τ)</code><ul>
+<li>Model conditional quantiles</li>
+</ul>
+</li>
+<li><code>SVMLike()</code><ul>
+<li>With <code>NoPenalty</code>, this is a perceptron.  With <code>RidgePenalty</code>, this is a support vector machine.</li>
+</ul>
+</li>
+<li><code>HuberRegression(δ)</code><ul>
+<li>Robust Huber loss</li>
+</ul>
+</li>
+</ul>
+<h3 id="penalty">Penalty</h3>
 <ul>
-<li>Linear Regression: <code>LinReg</code>, <code>StatLearn</code></li>
-<li>Logistic Regression: <code>StatLearn</code></li>
-<li>Poisson Regression: <code>StatLearn</code></li>
-<li>Support Vector Machines: <code>StatLearn</code></li>
-<li>Quantile Regression: <code>StatLearn</code>, <code>QuantReg</code></li>
-<li>Huber Loss Regression: <code>StatLearn</code></li>
-<li>L1 Loss Regression: <code>StatLearn</code></li>
+<li><code>NoPenalty()</code><ul>
+<li>No penalty.  Default.</li>
 </ul>
-<h3 id="other">Other</h3>
+</li>
+<li><code>RidgePenalty(λ)</code><ul>
+<li>Ridge regularization</li>
+</ul>
+</li>
+<li><code>LassoPenalty(λ)</code><ul>
+<li>LASSO regularization</li>
+</ul>
+</li>
+<li><code>ElasticNetPenalty(λ, α)</code><ul>
+<li>Weighted average of Ridge and LASSO.  <code>α = 0</code> is Ridge, <code>α = 1</code> is LASSO.</li>
+</ul>
+</li>
+</ul>
+<h3 id="algorithm">Algorithm</h3>
 <ul>
-<li>K-Means clustering: <code>KMeans</code></li>
-<li>Bootstrapping: <code>BernoulliBootstrap</code>, <code>PoissonBootstrap</code></li>
-<li>Approximate count of distinct elements: <code>HyperLogLog</code></li>
+<li><code>SGD()</code><ul>
+<li>Stochastic gradient descent.  Default.</li>
 </ul>
+</li>
+<li><code>AdaGrad()</code><ul>
+<li>Adaptive gradient method. Ignores <code>Weight</code>.</li>
+</ul>
+</li>
+<li><code>AdaDelta()</code><ul>
+<li>Essentially AdaGrad with momentum and altered Hessian approximation.  Ignores <code>Weight</code>.</li>
+</ul>
+</li>
+<li><code>RDA()</code><ul>
+<li>Regularized dual averaging with ADAGRAD.  Ignores <code>Weight</code>.</li>
+</ul>
+</li>
+<li><code>MMGrad()</code><ul>
+<li>Experimental online MM gradient method.</li>
+</ul>
+</li>
+</ul>
+<h2 id="learning-rates-and-batch-sizes-matter">Learning rates and batch sizes matter</h2>
+<p>Using mini-batches, gradient estimates are less noisy.  The trade-off,
+of course, is that fewer updates occur.</p>
+<pre><code class="julia">o1 = StatLearn(x, y, SGD(), LearningRate(.6))  # batch size = 1
+o2 = StatLearn(x, y, 10, LearningRate(.6), SGD())     # batch size = 10
+</code></pre>
+
+<p><strong>Note</strong>: The order of of <code>Weight</code>, <code>Algorithm</code>, <code>ModelDefinition</code>, and <code>Penalty</code> arguments don't matter.</p>
           <aside class="copyright" role="note">
             
             Documentation built with
@@ -289,24 +300,24 @@ type rely on stochastic approximation.</p>
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-    </div>
-    <div class="next">
-      
-        <a href="api/" title="API/Examples">
+        <a href="../api/" title="API/Examples">
           <span class="direction">
-            Next
+            Previous
           </span>
           <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
             <div class="stretch">
               <div class="title">
                 API/Examples
               </div>
             </div>
-            <div class="button button-next" role="button" aria-label="Next">
-              <i class="icon icon-forward"></i>
-            </div>
           </div>
         </a>
+      
+    </div>
+    <div class="next">
       
     </div>
   </nav>
@@ -325,10 +336,10 @@ type rely on stochastic approximation.</p>
       </div>
     </main>
     <script>
-      var base_url = '.';
+      var base_url = '..';
       var repo_id  = '';
     </script>
-    <script src="./assets/javascripts/application-997097ee0c.js"></script>
+    <script src="../assets/javascripts/application-997097ee0c.js"></script>
     
     
   </body>
