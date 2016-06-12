@@ -11,8 +11,12 @@ touch(fit)
 file = open(fit, "r+")
 write(file, "<!--- Generated at " * string(now()) * ".  Don't edit --->\n")
 write(file, "# Update Methods\n\n")
-m = replace(string(methods(OnlineStats.fit!)), "OnlineStats.", "")
-write(file, m)
+meth = methods(OnlineStats.fit!)
+ms = map(string, collect(meth))  # get Vector of strings of methods
+for m in ms
+    write(file, "- ")
+    write(file, replace(m, "OnlineStats.", ""))
+end
 close(file)
 
 #-------------------------------------------------------------------# Generate api.md
