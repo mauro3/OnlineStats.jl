@@ -16,7 +16,7 @@ ms = map(string, collect(meth))  # get Vector of strings of methods
 for m in ms
     write(file, "- ")
     st = replace(m, "OnlineStats.", "")
-    write(file, replace(st, " at ", "\n  - "))
+    write(file, replace(st, " at ", "\n    - "))
     write(file, "\n")
 end
 close(file)
