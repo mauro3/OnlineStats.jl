@@ -178,8 +178,8 @@
         <ul>
           
             <li class="anchor">
-              <a title="StatLearn is parameterized by three main types:" href="#statlearn-is-parameterized-by-three-main-types">
-                StatLearn is parameterized by three main types:
+              <a title="StatLearn is parameterized by three main types" href="#statlearn-is-parameterized-by-three-main-types">
+                StatLearn is parameterized by three main types
               </a>
             </li>
           
@@ -229,8 +229,17 @@
         <div class="wrapper">
           
           <h1 id="statlearn">StatLearn</h1>
-<p>Approximate solutions to statistical learning problems using online algorithms.  <code>StatLearn</code> has extremely fast fitting times.  For <code>p</code> features, updates are O(p).</p>
-<h2 id="statlearn-is-parameterized-by-three-main-types">StatLearn is parameterized by three main types:</h2>
+<p>Approximate solutions to statistical learning problems using online algorithms.  <code>StatLearn</code> has extremely fast fitting times.  Number of operations per update is linear with respect to the number of parameters.</p>
+<p><code>StatLearn</code> provides multiple algorithms for problems of the form</p>
+<p>
+<script type="math/tex; mode=display">\frac{1}{T}\sum_{t=1}^T f_t(\beta) + \lambda \; g(\beta),</script>
+</p>
+<p>where <script type="math/tex">f_t</script> is the loss at time/update <script type="math/tex">t</script>, <script type="math/tex">g</script> is a penalty/regularization term, and <script type="math/tex">\lambda</script> is the regularization parameter.</p>
+<h2 id="statlearn-is-parameterized-by-three-main-types">StatLearn is parameterized by three main types</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The idea is to use <code>Algorithm</code> to solve problems of the form <code>ModelDefinition + Penalty</code>.</p>
+</div>
 <h3 id="modeldefinition">ModelDefinition</h3>
 <ul>
 <li><code>L2Regression()</code><ul>
