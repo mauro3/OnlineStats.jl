@@ -158,8 +158,8 @@
           
             
   <li>
-    <a class="" title="API/Examples" href="../api/">
-      API/Examples
+    <a class="" title="Weighting" href="../weight/">
+      Weighting
     </a>
     
   </li>
@@ -178,8 +178,8 @@
         <ul>
           
             <li class="anchor">
-              <a title="StatLearn is parameterized by three types:" href="#statlearn-is-parameterized-by-three-types">
-                StatLearn is parameterized by three types:
+              <a title="StatLearn is parameterized by three main types:" href="#statlearn-is-parameterized-by-three-main-types">
+                StatLearn is parameterized by three main types:
               </a>
             </li>
           
@@ -191,6 +191,15 @@
           
         </ul>
       
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="API/Examples" href="../api/">
+      API/Examples
+    </a>
     
   </li>
 
@@ -220,8 +229,8 @@
         <div class="wrapper">
           
           <h1 id="statlearn">StatLearn</h1>
-<p>Approximate solutions to statistical learning problems using online algorithms.  <code>StatLearn</code> has extremely fast fitting times.</p>
-<h2 id="statlearn-is-parameterized-by-three-types">StatLearn is parameterized by three types:</h2>
+<p>Approximate solutions to statistical learning problems using online algorithms.  <code>StatLearn</code> has extremely fast fitting times.  For <code>p</code> features, updates are O(p).</p>
+<h2 id="statlearn-is-parameterized-by-three-main-types">StatLearn is parameterized by three main types:</h2>
 <h3 id="modeldefinition">ModelDefinition</h3>
 <ul>
 <li><code>L2Regression()</code><ul>
@@ -245,7 +254,7 @@
 </ul>
 </li>
 <li><code>SVMLike()</code><ul>
-<li>With <code>NoPenalty</code>, this is a perceptron.  With <code>RidgePenalty</code>, this is a support vector machine.</li>
+<li>For data in {-1, 1}.  With <code>NoPenalty</code>, this is a perceptron.  With <code>RidgePenalty</code>, this is a support vector machine.</li>
 </ul>
 </li>
 <li><code>HuberRegression(δ)</code><ul>
@@ -298,12 +307,16 @@
 <h2 id="learning-rates-and-batch-sizes-matter">Learning rates and batch sizes matter</h2>
 <p>Using mini-batches, gradient estimates are less noisy.  The trade-off,
 of course, is that fewer updates occur.</p>
-<div class="code"><pre><span class="n">o1</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">))</span>  <span class="c"># batch size = 1</span>
-<span class="n">o2</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">),</span> <span class="n">SGD</span><span class="p">())</span>     <span class="c"># batch size = 10</span>
+<div class="code"><pre><span class="n">o1</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">))</span>      <span class="c"># batch size = 1</span>
+<span class="n">o2</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">),</span> <span class="n">SGD</span><span class="p">())</span>  <span class="c"># batch size = 10</span>
 </pre></div>
 
 
-<p><strong>Note</strong>: The order of of <code>Weight</code>, <code>Algorithm</code>, <code>ModelDefinition</code>, and <code>Penalty</code> arguments don't matter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any order of <code>Weight</code>, <code>Algorithm</code>, <code>ModelDefinition</code>, and <code>Penalty</code> arguments are
+accepted by <code>StatLearn</code>.</p>
+</div>
           <aside class="copyright" role="note">
             
             Documentation built with
@@ -320,7 +333,7 @@ of course, is that fewer updates occur.</p>
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href="../api/" title="API/Examples">
+        <a href="../weight/" title="Weighting">
           <span class="direction">
             Previous
           </span>
@@ -330,7 +343,7 @@ of course, is that fewer updates occur.</p>
             </div>
             <div class="stretch">
               <div class="title">
-                API/Examples
+                Weighting
               </div>
             </div>
           </div>
@@ -338,6 +351,22 @@ of course, is that fewer updates occur.</p>
       
     </div>
     <div class="next">
+      
+        <a href="../api/" title="API/Examples">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                API/Examples
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
       
     </div>
   </nav>
@@ -360,6 +389,10 @@ of course, is that fewer updates occur.</p>
       var repo_id  = '';
     </script>
     <script src="../assets/javascripts/application-997097ee0c.js"></script>
+    
+      <script src="../mathjax-config.js"></script>
+    
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     
     
   </body>

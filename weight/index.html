@@ -9,47 +9,45 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>OnlineStats.jl - Online Statistics for Julia</title>
+        <title>Weighting - OnlineStats.jl</title>
       
       
-        <meta name="description" content="Online Statistics for Julia">
       
-      
-        <link rel="canonical" href="https://joshday.github.io/OnlineStats.jl/">
+        <link rel="canonical" href="https://joshday.github.io/OnlineStats.jl/weight/">
       
       
         <meta name="author" content="Josh Day">
       
     
-    <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/">
+    <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/weight/">
     <meta property="og:title" content="OnlineStats.jl">
-    <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl//./">
+    <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/weight//../">
     <meta name="apple-mobile-web-app-title" content="OnlineStats.jl">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     
-    <link rel="shortcut icon" type="image/x-icon" href="./None">
-    <link rel="icon" type="image/x-icon" href="./None">
+    <link rel="shortcut icon" type="image/x-icon" href="../None">
+    <link rel="icon" type="image/x-icon" href="../None">
     <style>
       @font-face {
       	font-family: 'Icon';
-      	src: url('./assets/fonts/icon.eot?52m981');
-      	src: url('./assets/fonts/icon.eot?#iefix52m981')
+      	src: url('../assets/fonts/icon.eot?52m981');
+      	src: url('../assets/fonts/icon.eot?#iefix52m981')
                format('embedded-opentype'),
-      		   url('./assets/fonts/icon.woff?52m981')
+      		   url('../assets/fonts/icon.woff?52m981')
                format('woff'),
-      		   url('./assets/fonts/icon.ttf?52m981')
+      		   url('../assets/fonts/icon.ttf?52m981')
                format('truetype'),
-      		   url('./assets/fonts/icon.svg?52m981#icon')
+      		   url('../assets/fonts/icon.svg?52m981#icon')
                format('svg');
       	font-weight: normal;
       	font-style: normal;
       }
     </style>
-    <link rel="stylesheet" href="./assets/stylesheets/application-0dac3e5884.css">
+    <link rel="stylesheet" href="../assets/stylesheets/application-0dac3e5884.css">
     
-      <link rel="stylesheet" href="./assets/stylesheets/palettes-05ab2406df.css">
+      <link rel="stylesheet" href="../assets/stylesheets/palettes-05ab2406df.css">
     
     
       
@@ -66,7 +64,7 @@
       </style>
     
     
-    <script src="./assets/javascripts/modernizr-4ab42b99fd.js"></script>
+    <script src="../assets/javascripts/modernizr-4ab42b99fd.js"></script>
     
   </head>
   
@@ -95,7 +93,7 @@
             
           </span>
         
-        OnlineStats.jl
+        Weighting
       </div>
     </div>
     
@@ -151,8 +149,17 @@
           
             
   <li>
-    <a class="current" title="Home" href=".">
+    <a class="" title="Home" href="..">
       Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="current" title="Weighting" href="./">
+      Weighting
     </a>
     
       
@@ -162,14 +169,14 @@
         <ul>
           
             <li class="anchor">
-              <a title="Overview" href="#overview">
-                Overview
+              <a title="Weight Types" href="#weight-types">
+                Weight Types
               </a>
             </li>
           
             <li class="anchor">
-              <a title="What Can OnlineStats Do?" href="#what-can-onlinestats-do">
-                What Can OnlineStats Do?
+              <a title="Override the Weight" href="#override-the-weight">
+                Override the Weight
               </a>
             </li>
           
@@ -181,16 +188,7 @@
           
             
   <li>
-    <a class="" title="Weighting" href="weight/">
-      Weighting
-    </a>
-    
-  </li>
-
-          
-            
-  <li>
-    <a class="" title="Predictive Modeling" href="StatLearn/">
+    <a class="" title="Predictive Modeling" href="../StatLearn/">
       Predictive Modeling
     </a>
     
@@ -199,7 +197,7 @@
           
             
   <li>
-    <a class="" title="API/Examples" href="api/">
+    <a class="" title="API/Examples" href="../api/">
       API/Examples
     </a>
     
@@ -230,74 +228,32 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="onlinestatsjl">OnlineStats.jl</h1>
-<p><strong>OnlineStats</strong> is a Julia package which provides online algorithms for statistical models.</p>
-<p>Online algorithms are well suited for streaming data or when data is too large to hold in memory.</p>
-<p>Observations are processed one at a time and all <strong>algorithms use O(1) memory</strong>.</p>
-<hr />
-<h2 id="overview">Overview</h2>
-<h3 id="every-onlinestat-is-a-type">Every OnlineStat is a Type</h3>
-<div class="code"><pre><span class="k">using</span> <span class="n">OnlineStats</span>
-<span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">()</span>
+          <h1 id="weighting">Weighting</h1>
+<p>OnlineStats are parameterized by a <code>Weight</code> type that determines the influence of the
+next observation.  The <code>Weight</code> is always the last argument of the constructor.</p>
+<div class="code"><pre><span class="c"># Example</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">CovMatrix</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">EqualWeight</span><span class="p">())</span>
 </pre></div>
 
 
-<h3 id="all-onlinestats-can-be-updated">All OnlineStats can be updated</h3>
-<div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<h2 id="weight-types">Weight Types</h2>
+<h3 id="equalweight">EqualWeight</h3>
+<p>Many online algorithms produce the same results as offline counterparts when using <code>EqualWeight</code>.  Each observation contributes equally.  This is the most common default.</p>
+<h3 id="exponentialweight">ExponentialWeight</h3>
+<p>The update weight is constant, so newer observations have higher influence.</p>
+<h3 id="boundedequalweight">BoundedEqualWeight</h3>
+<p>Use <code>EqualWeight</code> until a minimum weight is reached, then uses <code>ExponentialWeight</code></p>
+<h3 id="learningratelearningrate2">LearningRate/LearningRate2</h3>
+<p>Mainly for algorithms using stochastic approximation.  The weights decrease at a "slow" rate.</p>
+<h2 id="override-the-weight">Override the Weight</h2>
+<p>You can override an OnlineStat's Weight with an additional argument to <code>fit!</code></p>
+<div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">(</span><span class="n">EqualWeight</span><span class="p">())</span>
+<span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">.</span><span class="mi">01</span><span class="p">)</span>  <span class="c"># use weight of .01 for each observation</span>
 
-<span class="k">for</span> <span class="n">yi</span> <span class="k">in</span> <span class="n">y</span>
-    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="k">end</span>
-
-<span class="c"># or more simply:</span>
-<span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">wts</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">wts</span><span class="p">)</span>  <span class="c"># use weight of wts[i] for observation y[i]</span>
 </pre></div>
-
-
-<h3 id="onlinestats-share-a-common-interface">OnlineStats share a common interface</h3>
-<div class="code"><pre><span class="n">value</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>  <span class="c"># associated value of an OnlineStat</span>
-<span class="n">nobs</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>   <span class="c"># number of observations used</span>
-</pre></div>
-
-
-<hr />
-<h2 id="what-can-onlinestats-do">What Can OnlineStats Do?</h2>
-<p>While many estimates can be calculated analytically with an online algorithm, several
-type rely on stochastic approximation.</p>
-<h3 id="summary-statistics">Summary Statistics</h3>
-<ul>
-<li>Mean: <a href="./../api/#mean"><code>Mean</code></a>, <code>Means</code></li>
-<li>Variance: <code>Variance</code>, <code>Variances</code></li>
-<li>Quantiles: <code>QuantileMM</code>, <code>QuantileSGD</code></li>
-<li>Covariance Matrix: <code>CovMatrix</code></li>
-<li>Maximum and Minimum:  <code>Extrema</code></li>
-<li>Skewness and Kurtosis:  <code>Moments</code></li>
-<li>Sum/Differences:  <code>Sum</code>, <code>Sums</code>, <code>Diff</code>, <code>Diffs</code></li>
-</ul>
-<h3 id="density-estimation">Density Estimation</h3>
-<ul>
-<li><code>distributionfit(D, data)</code><ul>
-<li>For <code>D in [Beta, Categorical, Cauchy, Gamma, LogNormal, Normal, Multinomial, MvNormal]</code></li>
-</ul>
-</li>
-<li>Gaussian Mixtures: <code>NormalMix</code></li>
-</ul>
-<h3 id="predictive-modeling">Predictive Modeling</h3>
-<ul>
-<li>Linear Regression: <code>LinReg</code>, <code>StatLearn</code></li>
-<li>Logistic Regression: <code>StatLearn</code></li>
-<li>Poisson Regression: <code>StatLearn</code></li>
-<li>Support Vector Machines: <code>StatLearn</code></li>
-<li>Quantile Regression: <code>StatLearn</code>, <code>QuantReg</code></li>
-<li>Huber Loss Regression: <code>StatLearn</code></li>
-<li>L1 Loss Regression: <code>StatLearn</code></li>
-</ul>
-<h3 id="other">Other</h3>
-<ul>
-<li>K-Means clustering: <code>KMeans</code></li>
-<li>Bootstrapping: <code>BernoulliBootstrap</code>, <code>PoissonBootstrap</code></li>
-<li>Approximate count of distinct elements: <code>HyperLogLog</code></li>
-</ul>
           <aside class="copyright" role="note">
             
             Documentation built with
@@ -314,17 +270,33 @@ type rely on stochastic approximation.</p>
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
+        <a href=".." title="Home">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Home
+              </div>
+            </div>
+          </div>
+        </a>
+      
     </div>
     <div class="next">
       
-        <a href="weight/" title="Weighting">
+        <a href="../StatLearn/" title="Predictive Modeling">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                Weighting
+                Predictive Modeling
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">
@@ -350,12 +322,12 @@ type rely on stochastic approximation.</p>
       </div>
     </main>
     <script>
-      var base_url = '.';
+      var base_url = '..';
       var repo_id  = '';
     </script>
-    <script src="./assets/javascripts/application-997097ee0c.js"></script>
+    <script src="../assets/javascripts/application-997097ee0c.js"></script>
     
-      <script src="./mathjax-config.js"></script>
+      <script src="../mathjax-config.js"></script>
     
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     

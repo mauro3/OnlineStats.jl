@@ -158,6 +158,24 @@
           
             
   <li>
+    <a class="" title="Weighting" href="../weight/">
+      Weighting
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Predictive Modeling" href="../StatLearn/">
+      Predictive Modeling
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
     <a class="current" title="API/Examples" href="./">
       API/Examples
     </a>
@@ -390,15 +408,6 @@
   </li>
 
           
-            
-  <li>
-    <a class="" title="Predictive Modeling" href="../StatLearn/">
-      Predictive Modeling
-    </a>
-    
-  </li>
-
-          
         </ul>
         
           <hr>
@@ -423,7 +432,7 @@
       <article class="article">
         <div class="wrapper">
           
-          <!--- Generated at 2016-06-11T19:56:47.  Don't edit --->
+          <!--- Generated at 2016-06-11T22:00:44.  Don't edit --->
 
 <h1 id="api">API</h1>
 <h2 id="bernoullibootstrap">BernoulliBootstrap</h2>
@@ -546,10 +555,11 @@ confint(o, .95)
 <h2 id="mean">Mean</h2>
 <p>Mean of a single series.</p>
 <div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
 <span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">()</span>
 <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">mean</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>  <span class="c"># return the mean</span>
-<span class="n">center</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c"># returns 0.5 - mean(o)</span>
+
+<span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 
 
@@ -790,7 +800,7 @@ value(o)
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href=".." title="Home">
+        <a href="../StatLearn/" title="Predictive Modeling">
           <span class="direction">
             Previous
           </span>
@@ -800,7 +810,7 @@ value(o)
             </div>
             <div class="stretch">
               <div class="title">
-                Home
+                Predictive Modeling
               </div>
             </div>
           </div>
@@ -808,22 +818,6 @@ value(o)
       
     </div>
     <div class="next">
-      
-        <a href="../StatLearn/" title="Predictive Modeling">
-          <span class="direction">
-            Next
-          </span>
-          <div class="page">
-            <div class="stretch">
-              <div class="title">
-                Predictive Modeling
-              </div>
-            </div>
-            <div class="button button-next" role="button" aria-label="Next">
-              <i class="icon icon-forward"></i>
-            </div>
-          </div>
-        </a>
       
     </div>
   </nav>
@@ -846,6 +840,10 @@ value(o)
       var repo_id  = '';
     </script>
     <script src="../assets/javascripts/application-997097ee0c.js"></script>
+    
+      <script src="../mathjax-config.js"></script>
+    
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     
     
   </body>
