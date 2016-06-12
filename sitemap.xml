@@ -19,14 +19,6 @@
 
     
     <url>
-     <loc>https://joshday.github.io/OnlineStats.jl//fit/</loc>
-     <lastmod>2016-06-12</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
      <loc>https://joshday.github.io/OnlineStats.jl//StatLearn/</loc>
      <lastmod>2016-06-12</lastmod>
      <changefreq>daily</changefreq>

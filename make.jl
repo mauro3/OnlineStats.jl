@@ -4,23 +4,6 @@ using OnlineStats
 
 rootdir = Pkg.dir("OnlineStats")
 
-#-------------------------------------------------------------------# Generate fit.md
-fit = rootdir * "/doc/fit.md"
-rm(fit)
-touch(fit)
-file = open(fit, "r+")
-write(file, "<!--- Generated at " * string(now()) * ".  Don't edit --->\n")
-write(file, "# Update Methods\n\n")
-meth = methods(OnlineStats.fit!)
-ms = map(string, collect(meth))  # get Vector of strings of methods
-for m in ms
-    write(file, "- ")
-    st = replace(m, "OnlineStats.", "")
-    write(file, replace(st, " at ", "\n    - "))
-    write(file, "\n")
-end
-close(file)
-
 #-------------------------------------------------------------------# Generate api.md
 api = rootdir * "/doc/api.md"
 rm(api)

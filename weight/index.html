@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>Weighting - OnlineStats.jl</title>
+        <title>Weighting - OnlineStats.jl 0.6</title>
       
       
       
@@ -20,9 +20,9 @@
       
     
     <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/weight/">
-    <meta property="og:title" content="OnlineStats.jl">
+    <meta property="og:title" content="OnlineStats.jl 0.6">
     <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/weight//../">
-    <meta name="apple-mobile-web-app-title" content="OnlineStats.jl">
+    <meta name="apple-mobile-web-app-title" content="OnlineStats.jl 0.6">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
@@ -132,7 +132,7 @@
       
       <div class="name">
         <strong>
-          OnlineStats.jl
+          OnlineStats.jl 0.6
           <span class="version">
             
           </span>
@@ -188,15 +188,6 @@
           
             
   <li>
-    <a class="" title="Update Methods" href="../fit/">
-      Update Methods
-    </a>
-    
-  </li>
-
-          
-            
-  <li>
     <a class="" title="Predictive Modeling" href="../StatLearn/">
       Predictive Modeling
     </a>
@@ -246,16 +237,53 @@ next observation.  The <code>Weight</code> is always the last argument of the co
 
 
 <h2 id="weight-types">Weight Types</h2>
+<p>Many updates take the form of a weighted average.  For a current estimate <script type="math/tex">\theta^{(t-1)}</script> and new value <script type="math/tex">x_t</script>, we update the estimate with:</p>
+<p>
+<script type="math/tex; mode=display">\theta^{(t)} = (1 - \gamma_t) \theta^{(t-1)} + \gamma_t \; x_t</script>
+</p>
+<p>Consider how the weights <script type="math/tex">\gamma_t</script> affect the influence of the new value on the estimate.  The weight types below will be explained in terms of the weights <script type="math/tex">\gamma_t</script>.</p>
 <h3 id="equalweight">EqualWeight</h3>
+<div class="code"><pre>EqualWeight()
+</pre></div>
+
+
 <p>Many online algorithms produce the same results as offline counterparts when using <code>EqualWeight</code>.  Each observation contributes equally.  This is the most common default.</p>
+<p>
+<script type="math/tex; mode=display">\gamma_t = \frac{1}{t}</script>
+</p>
 <h3 id="exponentialweight">ExponentialWeight</h3>
+<div class="code"><pre>ExponentialWeight(λ::Float64)
+ExponentialWeight(lookback::Int)
+</pre></div>
+
+
 <p>The update weight is constant, so newer observations have higher influence.</p>
+<p>
+<script type="math/tex; mode=display">\gamma_t = \lambda</script>
+</p>
+<p>where <code>λ = 2 / (lookback + 1)</code></p>
 <h3 id="boundedequalweight">BoundedEqualWeight</h3>
+<div class="code"><pre>BoundedEqualWeight(λ::Float64)
+BoundedEqualWeight(lookback::Int)
+</pre></div>
+
+
 <p>Use <code>EqualWeight</code> until a minimum weight is reached, then uses <code>ExponentialWeight</code></p>
-<h3 id="learningratelearningrate2">LearningRate/LearningRate2</h3>
-<p>Mainly for algorithms using stochastic approximation.  The weights decrease at a "slow" rate.</p>
+<p>
+<script type="math/tex; mode=display">\gamma_t = \text{max}\left(\lambda, \frac{1}{t}\right)</script>
+</p>
+<h3 id="learningrate">LearningRate</h3>
+<div class="code"><pre>LearningRate(r::Float64 = .5, λ::Float64 = 0.0)
+</pre></div>
+
+
+<p>Mainly for algorithms using stochastic approximation.  The weights decrease at a "slow" rate
+until reaching a minimum weight, then uses <code>ExponentialWeight</code>.</p>
+<p>
+<script type="math/tex; mode=display">\gamma_t = \text{max}\left(\lambda, \frac{1}{t^r}\right), \quad r \in [.5, 1]</script>
+</p>
 <h2 id="override-the-weight">Override the Weight</h2>
-<p>You can override an OnlineStat's Weight with an additional argument to <code>fit!</code></p>
+<p>You can override an OnlineStat's Weight with an additional argument to <code>fit!</code>.  </p>
 <div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">(</span><span class="n">EqualWeight</span><span class="p">())</span>
 <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">.</span><span class="mi">01</span><span class="p">)</span>  <span class="c"># use weight of .01 for each observation</span>
@@ -298,14 +326,14 @@ next observation.  The <code>Weight</code> is always the last argument of the co
     </div>
     <div class="next">
       
-        <a href="../fit/" title="Update Methods">
+        <a href="../StatLearn/" title="Predictive Modeling">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                Update Methods
+                Predictive Modeling
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">
