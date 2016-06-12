@@ -4,6 +4,17 @@ using OnlineStats
 
 rootdir = Pkg.dir("OnlineStats")
 
+#-------------------------------------------------------------------# Generate fit.md
+fit = rootdir * "/doc/fit.md"
+try rm(fit) end
+touch(fit)
+file = open(fit, "r+")
+write(file, "<!--- Generated at " * string(now()) * ".  Don't edit --->\n")
+write(file, "# Update Methods\n\n")
+m = replace(string(methods(OnlineStats.fit!)), "OnlineStats.", "")
+write(file, m)
+close(file)
+
 #-------------------------------------------------------------------# Generate api.md
 api = rootdir * "/doc/api.md"
 rm(api)

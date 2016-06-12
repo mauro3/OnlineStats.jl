@@ -9,19 +9,19 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>Weighting - OnlineStats.jl</title>
+        <title>Update Methods - OnlineStats.jl</title>
       
       
       
-        <link rel="canonical" href="https://joshday.github.io/OnlineStats.jl/weight/">
+        <link rel="canonical" href="https://joshday.github.io/OnlineStats.jl/fit/">
       
       
         <meta name="author" content="Josh Day">
       
     
-    <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/weight/">
+    <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/fit/">
     <meta property="og:title" content="OnlineStats.jl">
-    <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/weight//../">
+    <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/fit//../">
     <meta name="apple-mobile-web-app-title" content="OnlineStats.jl">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -93,7 +93,7 @@
             
           </span>
         
-        Weighting
+        Update Methods
       </div>
     </div>
     
@@ -158,39 +158,23 @@
           
             
   <li>
-    <a class="current" title="Weighting" href="./">
+    <a class="" title="Weighting" href="../weight/">
       Weighting
     </a>
-    
-      
-        
-      
-      
-        <ul>
-          
-            <li class="anchor">
-              <a title="Weight Types" href="#weight-types">
-                Weight Types
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Override the Weight" href="#override-the-weight">
-                Override the Weight
-              </a>
-            </li>
-          
-        </ul>
-      
     
   </li>
 
           
             
   <li>
-    <a class="" title="Update Methods" href="../fit/">
+    <a class="current" title="Update Methods" href="./">
       Update Methods
     </a>
+    
+      
+        
+      
+      
     
   </li>
 
@@ -237,32 +221,32 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="weighting">Weighting</h1>
-<p>OnlineStats are parameterized by a <code>Weight</code> type that determines the influence of the
-next observation.  The <code>Weight</code> is always the last argument of the constructor.</p>
-<div class="code"><pre><span class="c"># Example</span>
-<span class="n">o</span> <span class="o">=</span> <span class="n">CovMatrix</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">EqualWeight</span><span class="p">())</span>
-</pre></div>
+          <!--- Generated at 2016-06-12T09:02:08.  Don't edit --->
 
-
-<h2 id="weight-types">Weight Types</h2>
-<h3 id="equalweight">EqualWeight</h3>
-<p>Many online algorithms produce the same results as offline counterparts when using <code>EqualWeight</code>.  Each observation contributes equally.  This is the most common default.</p>
-<h3 id="exponentialweight">ExponentialWeight</h3>
-<p>The update weight is constant, so newer observations have higher influence.</p>
-<h3 id="boundedequalweight">BoundedEqualWeight</h3>
-<p>Use <code>EqualWeight</code> until a minimum weight is reached, then uses <code>ExponentialWeight</code></p>
-<h3 id="learningratelearningrate2">LearningRate/LearningRate2</h3>
-<p>Mainly for algorithms using stochastic approximation.  The weights decrease at a "slow" rate.</p>
-<h2 id="override-the-weight">Override the Weight</h2>
-<p>You can override an OnlineStat's Weight with an additional argument to <code>fit!</code></p>
-<div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">(</span><span class="n">EqualWeight</span><span class="p">())</span>
-<span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">.</span><span class="mi">01</span><span class="p">)</span>  <span class="c"># use weight of .01 for each observation</span>
-
-<span class="n">wts</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">wts</span><span class="p">)</span>  <span class="c"># use weight of wts[i] for observation y[i]</span>
-</pre></div>
+<h1 id="update-methods">Update Methods</h1>
+<h1 id="22-methods-for-generic-function-fit">22 methods for generic function "fit!":</h1>
+<p>fit!(obj::StatsBase.StatisticalModel, data...) at /Users/joshday/.julia/v0.4/StatsBase/src/statmodels.jl:47
+fit!(o::OnlineStat{ScalarInput}, y::Real) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:84
+fit!{T&lt;:Real}(o::OnlineStat{VectorInput}, y::AbstractArray{T&lt;:Real,1}) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:90
+fit!{T&lt;:Real}(o::OnlineStat{XYInput}, x::AbstractArray{T&lt;:Real,1}, y::Real) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:96
+fit!(o::OnlineStat{ScalarInput}, y::Real, γ::Float64) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:104
+fit!{T&lt;:Real}(o::OnlineStat{VectorInput}, y::AbstractArray{T&lt;:Real,1}, γ::Float64) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:109
+fit!{T&lt;:Real}(o::OnlineStat{XYInput}, x::AbstractArray{T&lt;:Real,1}, y::Real, γ::Float64) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:114
+fit!{T&lt;:Union{AbstractString,Symbol}}(o::FitCategorical{T}, y::AbstractArray{T&lt;:Union{AbstractString,Symbol},1}) at /Users/joshday/.julia/v0.4/OnlineStats/src/distributions.jl:72
+fit!(o::OnlineStat{ScalarInput}, y::AbstractArray{T,1}) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:121
+fit!(o::OnlineStat{VectorInput}, y::AbstractArray{T,2}) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:127
+fit!(o::OnlineStat{XYInput}, x::AbstractArray{T,2}, y::AbstractArray{T,1}) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:133
+fit!(o::OnlineStat{ScalarInput}, y::AbstractArray{T,1}, w::AbstractArray{T,1}) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:142
+fit!(o::OnlineStat{VectorInput}, y::AbstractArray{T,2}, w::AbstractArray{T,1}) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:149
+fit!(o::OnlineStat{XYInput}, x::AbstractArray{T,2}, y::AbstractArray{T,1}, w::AbstractArray{T,1}) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:157
+fit!(o::OnlineStat{ScalarInput}, y::AbstractArray{T,1}, b::Integer) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:203
+fit!(o::OnlineStat{ScalarInput}, y::AbstractArray{T,1}, w::Real) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:166
+fit!(o::OnlineStat{VectorInput}, y::AbstractArray{T,2}, b::Integer) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:222
+fit!(o::OnlineStat{VectorInput}, y::AbstractArray{T,2}, w::Real) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:172
+fit!(o::OnlineStat{XYInput}, x::AbstractArray{T,2}, y::AbstractArray{T,1}, b::Integer) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:241
+fit!(o::OnlineStat{XYInput}, x::AbstractArray{T,2}, y::AbstractArray{T,1}, w::Real) at /Users/joshday/.julia/v0.4/OnlineStats/src/jl:179
+fit!(o::FitCategorical{T}, y::Union{AbstractString,Symbol}) at /Users/joshday/.julia/v0.4/OnlineStats/src/distributions.jl:66
+fit!(counter::HyperLogLog, v) at /Users/joshday/.julia/v0.4/OnlineStats/src/streamstats/hyperloglog.jl:74</p>
           <aside class="copyright" role="note">
             
             Documentation built with
@@ -279,7 +263,7 @@ next observation.  The <code>Weight</code> is always the last argument of the co
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href=".." title="Home">
+        <a href="../weight/" title="Weighting">
           <span class="direction">
             Previous
           </span>
@@ -289,7 +273,7 @@ next observation.  The <code>Weight</code> is always the last argument of the co
             </div>
             <div class="stretch">
               <div class="title">
-                Home
+                Weighting
               </div>
             </div>
           </div>
@@ -298,14 +282,14 @@ next observation.  The <code>Weight</code> is always the last argument of the co
     </div>
     <div class="next">
       
-        <a href="../fit/" title="Update Methods">
+        <a href="../StatLearn/" title="Predictive Modeling">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                Update Methods
+                Predictive Modeling
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">
