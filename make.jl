@@ -6,7 +6,7 @@ rootdir = Pkg.dir("OnlineStats")
 
 #-------------------------------------------------------------------# Generate fit.md
 fit = rootdir * "/doc/fit.md"
-try rm(fit) end
+rm(fit)
 touch(fit)
 file = open(fit, "r+")
 write(file, "<!--- Generated at " * string(now()) * ".  Don't edit --->\n")
@@ -16,6 +16,7 @@ ms = map(string, collect(meth))  # get Vector of strings of methods
 for m in ms
     write(file, "- ")
     write(file, replace(m, "OnlineStats.", ""))
+    write(file, "\n")
 end
 close(file)
 
