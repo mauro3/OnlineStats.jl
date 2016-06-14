@@ -9,19 +9,19 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>Predictive Modeling - OnlineStats.jl</title>
+        <title>Callbacks - OnlineStats.jl</title>
       
       
       
-        <link rel="canonical" href="https://joshday.github.io/OnlineStats.jl/StatLearn/">
+        <link rel="canonical" href="https://joshday.github.io/OnlineStats.jl/callback/">
       
       
         <meta name="author" content="Josh Day">
       
     
-    <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/StatLearn/">
+    <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/callback/">
     <meta property="og:title" content="OnlineStats.jl">
-    <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/StatLearn//../">
+    <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/callback//../">
     <meta name="apple-mobile-web-app-title" content="OnlineStats.jl">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -96,7 +96,7 @@
             
           </span>
         
-        Predictive Modeling
+        Callbacks
       </div>
     </div>
     
@@ -189,17 +189,8 @@
           
             
   <li>
-    <a class="" title="Callbacks" href="../callback/">
+    <a class="current" title="Callbacks" href="./">
       Callbacks
-    </a>
-    
-  </li>
-
-          
-            
-  <li>
-    <a class="current" title="Predictive Modeling" href="./">
-      Predictive Modeling
     </a>
     
       
@@ -209,19 +200,28 @@
         <ul>
           
             <li class="anchor">
-              <a title="StatLearn is parameterized by three main types" href="#statlearn-is-parameterized-by-three-main-types">
-                StatLearn is parameterized by three main types
+              <a title="Example 1" href="#example-1">
+                Example 1
               </a>
             </li>
           
             <li class="anchor">
-              <a title="Learning rates and batch sizes matter" href="#learning-rates-and-batch-sizes-matter">
-                Learning rates and batch sizes matter
+              <a title="Example 2" href="#example-2">
+                Example 2
               </a>
             </li>
           
         </ul>
       
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Predictive Modeling" href="../StatLearn/">
+      Predictive Modeling
+    </a>
     
   </li>
 
@@ -259,104 +259,50 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="statlearn">StatLearn</h1>
-<p>Approximate solutions to statistical learning problems using online algorithms.  <code>StatLearn</code> has extremely fast fitting times.  Number of operations per update is linear with respect to the number of parameters.</p>
-<p><code>StatLearn</code> provides multiple algorithms for problems of the form</p>
-<p>
-<script type="math/tex; mode=display">\frac{1}{T}\sum_{t=1}^T f_t(\beta) + \lambda \; g(\beta),</script>
-</p>
-<p>where <script type="math/tex">f_t</script> is the loss at time/update <script type="math/tex">t</script>, <script type="math/tex">g</script> is a penalty/regularization term, and <script type="math/tex">\lambda</script> is the regularization parameter.</p>
-<h2 id="statlearn-is-parameterized-by-three-main-types">StatLearn is parameterized by three main types</h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The idea is to use <code>Algorithm</code> to solve problems of the form <code>ModelDefinition + Penalty</code>.</p>
-</div>
-<h3 id="modeldefinition">ModelDefinition</h3>
-<ul>
-<li><code>L2Regression()</code><ul>
-<li>Squared error loss.  Default.</li>
-</ul>
-</li>
-<li><code>L1Regression()</code><ul>
-<li>Absolute loss</li>
-</ul>
-</li>
-<li><code>LogisticRegression()</code><ul>
-<li>Model for data in {0, 1}</li>
-</ul>
-</li>
-<li><code>PoissonRegression()</code><ul>
-<li>Model count data {0, 1, 2, 3, ...}</li>
-</ul>
-</li>
-<li><code>QuantileRegression(τ)</code><ul>
-<li>Model conditional quantiles</li>
-</ul>
-</li>
-<li><code>SVMLike()</code><ul>
-<li>For data in {-1, 1}.  With <code>NoPenalty</code>, this is a perceptron.  With <code>RidgePenalty</code>, this is a support vector machine.</li>
-</ul>
-</li>
-<li><code>HuberRegression(δ)</code><ul>
-<li>Robust Huber loss</li>
-</ul>
-</li>
-</ul>
-<h3 id="penalty">Penalty</h3>
-<ul>
-<li><code>NoPenalty()</code><ul>
-<li>No penalty.  Default.</li>
-</ul>
-</li>
-<li><code>RidgePenalty(λ)</code><ul>
-<li>Ridge regularization</li>
-</ul>
-</li>
-<li><code>LassoPenalty(λ)</code><ul>
-<li>LASSO regularization</li>
-</ul>
-</li>
-<li><code>ElasticNetPenalty(λ, α)</code><ul>
-<li>Weighted average of Ridge and LASSO.  <code>α = 0</code> is Ridge, <code>α = 1</code> is LASSO.</li>
-</ul>
-</li>
-</ul>
-<h3 id="algorithm">Algorithm</h3>
-<ul>
-<li><code>SGD()</code><ul>
-<li>Stochastic gradient descent.  Default.</li>
-</ul>
-</li>
-<li><code>AdaGrad()</code><ul>
-<li>Adaptive gradient method. Ignores <code>Weight</code>.</li>
-</ul>
-</li>
-<li><code>AdaDelta()</code><ul>
-<li>Essentially AdaGrad with momentum and altered Hessian approximation.  Ignores <code>Weight</code>.</li>
-</ul>
-</li>
-<li><code>RDA()</code><ul>
-<li>Regularized dual averaging with ADAGRAD.  Ignores <code>Weight</code>.</li>
-</ul>
-</li>
-<li><code>MMGrad()</code><ul>
-<li>Experimental online MM gradient method.</li>
-</ul>
-</li>
-</ul>
-<h2 id="learning-rates-and-batch-sizes-matter">Learning rates and batch sizes matter</h2>
-<p>Using mini-batches, gradient estimates are less noisy.  The trade-off,
-of course, is that fewer updates occur.</p>
-<div class="code"><pre><span class="n">o1</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">))</span>      <span class="c"># batch size = 1</span>
-<span class="n">o2</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">),</span> <span class="n">SGD</span><span class="p">())</span>  <span class="c"># batch size = 10</span>
+          <h1 id="callbacks">Callbacks</h1>
+<p>While an OnlineStat is being updated, you may wish to perform an action like print intermediate results to a log file or update a plot.  For this purpose, OnlineStats exports a <code>map_rows</code> function.</p>
+<p><code>map_rows(f::Function, b::Integer, data...)</code></p>
+<p><code>map_rows</code> works similar to <code>Base.map</code>, but passes the arguments to the function in batches of size <code>b</code>.</p>
+<h2 id="example-1">Example 1</h2>
+<h3 id="input">Input</h3>
+<div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">()</span>
+<span class="n">map_rows</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">yi</span>
+    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="n">info</span><span class="p">(</span><span class="s">&quot;value of mean is </span><span class="si">$</span><span class="s">(mean(o))&quot;</span><span class="p">)</span>
+<span class="k">end</span>
 </pre></div>
 
 
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Any order of <code>Weight</code>, <code>Algorithm</code>, <code>ModelDefinition</code>, and <code>Penalty</code> arguments are
-accepted by <code>StatLearn</code>.</p>
-</div>
+<h3 id="output">Output</h3>
+<div class="code"><pre><span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="mf">0.06340121912925167</span>
+<span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="o">-</span><span class="mf">0.06576995293439102</span>
+<span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="mf">0.05374292238752276</span>
+<span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="mf">0.008857939006120167</span>
+<span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="mf">0.016199508928045905</span>
+</pre></div>
+
+
+<h2 id="example-2">Example 2</h2>
+<h3 id="input_1">Input</h3>
+<div class="code"><pre><span class="k">using</span> <span class="n">Plots</span><span class="p">;</span> <span class="n">pyplot</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span>
+
+<span class="n">o</span> <span class="o">=</span> <span class="n">QuantileMM</span><span class="p">(</span><span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">),</span> <span class="n">tau</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">])</span>
+
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">map_rows</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">yi</span>
+    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">push</span><span class="o">!</span><span class="p">(</span><span class="n">plt</span><span class="p">,</span> <span class="n">nobs</span><span class="p">(</span><span class="n">o</span><span class="p">),</span> <span class="n">value</span><span class="p">(</span><span class="n">o</span><span class="p">))</span>
+<span class="k">end</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="output_1">Output</h3>
+<p><img alt="" src="../images/example2.png" /></p>
           <aside class="copyright" role="note">
             
             Documentation built with
@@ -373,7 +319,7 @@ accepted by <code>StatLearn</code>.</p>
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href="../callback/" title="Callbacks">
+        <a href="../weight/" title="Weighting">
           <span class="direction">
             Previous
           </span>
@@ -383,7 +329,7 @@ accepted by <code>StatLearn</code>.</p>
             </div>
             <div class="stretch">
               <div class="title">
-                Callbacks
+                Weighting
               </div>
             </div>
           </div>
@@ -392,14 +338,14 @@ accepted by <code>StatLearn</code>.</p>
     </div>
     <div class="next">
       
-        <a href="../api/" title="API/Examples">
+        <a href="../StatLearn/" title="Predictive Modeling">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                API/Examples
+                Predictive Modeling
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">

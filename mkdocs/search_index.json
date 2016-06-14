@@ -96,6 +96,46 @@
             "title": "Override the Weight"
         }, 
         {
+            "location": "/callback/", 
+            "text": "Callbacks\n\n\nWhile an OnlineStat is being updated, you may wish to perform an action like print intermediate results to a log file or update a plot.  For this purpose, OnlineStats exports a \nmap_rows\n function.\n\n\nmap_rows(f::Function, b::Integer, data...)\n\n\nmap_rows\n works similar to \nBase.map\n, but passes the arguments to the function in batches of size \nb\n.\n\n\nExample 1\n\n\nInput\n\n\ny\n \n=\n \nrandn\n(\n100\n)\n\n\no\n \n=\n \nMean\n()\n\n\nmap_rows\n(\n20\n,\n \ny\n)\n \ndo\n \nyi\n\n    \nfit\n!\n(\no\n,\n \nyi\n)\n\n    \ninfo\n(\nvalue of mean is \n$\n(mean(o))\n)\n\n\nend\n\n\n\n\n\n\nOutput\n\n\nINFO\n:\n \nvalue\n \nof\n \nmean\n \nis\n \n0.06340121912925167\n\n\nINFO\n:\n \nvalue\n \nof\n \nmean\n \nis\n \n-\n0.06576995293439102\n\n\nINFO\n:\n \nvalue\n \nof\n \nmean\n \nis\n \n0.05374292238752276\n\n\nINFO\n:\n \nvalue\n \nof\n \nmean\n \nis\n \n0.008857939006120167\n\n\nINFO\n:\n \nvalue\n \nof\n \nmean\n \nis\n \n0.016199508928045905\n\n\n\n\n\n\nExample 2\n\n\nInput\n\n\nusing\n \nPlots\n;\n \npyplot\n()\n\n\ny\n \n=\n \nrandn\n(\n10_000\n)\n\n\n\no\n \n=\n \nQuantileMM\n(\nLearningRate\n(\n.\n7\n),\n \ntau\n \n=\n \n[\n.\n25\n,\n \n.\n5\n,\n \n.\n75\n])\n\n\n\nplt\n \n=\n \nplot\n([\n0\n],\n \nzeros\n(\n3\n,\n \n1\n))\n\n\n\nmap_rows\n(\n50\n,\n \ny\n)\n \ndo\n \nyi\n\n    \nfit\n!\n(\no\n,\n \nyi\n,\n \n5\n)\n\n    \npush\n!\n(\nplt\n,\n \nnobs\n(\no\n),\n \nvalue\n(\no\n))\n\n\nend\n\n\n\ndisplay\n(\nplt\n)\n\n\n\n\n\n\nOutput", 
+            "title": "Callbacks"
+        }, 
+        {
+            "location": "/callback/#callbacks", 
+            "text": "While an OnlineStat is being updated, you may wish to perform an action like print intermediate results to a log file or update a plot.  For this purpose, OnlineStats exports a  map_rows  function.  map_rows(f::Function, b::Integer, data...)  map_rows  works similar to  Base.map , but passes the arguments to the function in batches of size  b .", 
+            "title": "Callbacks"
+        }, 
+        {
+            "location": "/callback/#example-1", 
+            "text": "", 
+            "title": "Example 1"
+        }, 
+        {
+            "location": "/callback/#input", 
+            "text": "y   =   randn ( 100 )  o   =   Mean ()  map_rows ( 20 ,   y )   do   yi \n     fit ! ( o ,   yi ) \n     info ( value of mean is  $ (mean(o)) )  end", 
+            "title": "Input"
+        }, 
+        {
+            "location": "/callback/#output", 
+            "text": "INFO :   value   of   mean   is   0.06340121912925167  INFO :   value   of   mean   is   - 0.06576995293439102  INFO :   value   of   mean   is   0.05374292238752276  INFO :   value   of   mean   is   0.008857939006120167  INFO :   value   of   mean   is   0.016199508928045905", 
+            "title": "Output"
+        }, 
+        {
+            "location": "/callback/#example-2", 
+            "text": "", 
+            "title": "Example 2"
+        }, 
+        {
+            "location": "/callback/#input_1", 
+            "text": "using   Plots ;   pyplot ()  y   =   randn ( 10_000 )  o   =   QuantileMM ( LearningRate ( . 7 ),   tau   =   [ . 25 ,   . 5 ,   . 75 ])  plt   =   plot ([ 0 ],   zeros ( 3 ,   1 ))  map_rows ( 50 ,   y )   do   yi \n     fit ! ( o ,   yi ,   5 ) \n     push ! ( plt ,   nobs ( o ),   value ( o ))  end  display ( plt )", 
+            "title": "Input"
+        }, 
+        {
+            "location": "/callback/#output_1", 
+            "text": "", 
+            "title": "Output"
+        }, 
+        {
             "location": "/StatLearn/", 
             "text": "StatLearn\n\n\nApproximate solutions to statistical learning problems using online algorithms.  \nStatLearn\n has extremely fast fitting times.  Number of operations per update is linear with respect to the number of parameters.\n\n\nStatLearn\n provides multiple algorithms for problems of the form\n\n\n\n\n\\frac{1}{T}\\sum_{t=1}^T f_t(\\beta) + \\lambda \\; g(\\beta),\n\n\n\n\nwhere \nf_t\n is the loss at time/update \nt\n, \ng\n is a penalty/regularization term, and \n\\lambda\n is the regularization parameter.\n\n\nStatLearn is parameterized by three main types\n\n\n\n\nNote\n\n\nThe idea is to use \nAlgorithm\n to solve problems of the form \nModelDefinition + Penalty\n.\n\n\n\n\nModelDefinition\n\n\n\n\nL2Regression()\n\n\nSquared error loss.  Default.\n\n\n\n\n\n\nL1Regression()\n\n\nAbsolute loss\n\n\n\n\n\n\nLogisticRegression()\n\n\nModel for data in {0, 1}\n\n\n\n\n\n\nPoissonRegression()\n\n\nModel count data {0, 1, 2, 3, ...}\n\n\n\n\n\n\nQuantileRegression(\u03c4)\n\n\nModel conditional quantiles\n\n\n\n\n\n\nSVMLike()\n\n\nFor data in {-1, 1}.  With \nNoPenalty\n, this is a perceptron.  With \nRidgePenalty\n, this is a support vector machine.\n\n\n\n\n\n\nHuberRegression(\u03b4)\n\n\nRobust Huber loss\n\n\n\n\n\n\n\n\nPenalty\n\n\n\n\nNoPenalty()\n\n\nNo penalty.  Default.\n\n\n\n\n\n\nRidgePenalty(\u03bb)\n\n\nRidge regularization\n\n\n\n\n\n\nLassoPenalty(\u03bb)\n\n\nLASSO regularization\n\n\n\n\n\n\nElasticNetPenalty(\u03bb, \u03b1)\n\n\nWeighted average of Ridge and LASSO.  \n\u03b1 = 0\n is Ridge, \n\u03b1 = 1\n is LASSO.\n\n\n\n\n\n\n\n\nAlgorithm\n\n\n\n\nSGD()\n\n\nStochastic gradient descent.  Default.\n\n\n\n\n\n\nAdaGrad()\n\n\nAdaptive gradient method. Ignores \nWeight\n.\n\n\n\n\n\n\nAdaDelta()\n\n\nEssentially AdaGrad with momentum and altered Hessian approximation.  Ignores \nWeight\n.\n\n\n\n\n\n\nRDA()\n\n\nRegularized dual averaging with ADAGRAD.  Ignores \nWeight\n.\n\n\n\n\n\n\nMMGrad()\n\n\nExperimental online MM gradient method.\n\n\n\n\n\n\n\n\nLearning rates and batch sizes matter\n\n\nUsing mini-batches, gradient estimates are less noisy.  The trade-off,\nof course, is that fewer updates occur.\n\n\no1\n \n=\n \nStatLearn\n(\nx\n,\n \ny\n,\n \nSGD\n(),\n \nLearningRate\n(\n.\n6\n))\n      \n# batch size = 1\n\n\no2\n \n=\n \nStatLearn\n(\nx\n,\n \ny\n,\n \n10\n,\n \nLearningRate\n(\n.\n6\n),\n \nSGD\n())\n  \n# batch size = 10\n\n\n\n\n\n\n\n\nNote\n\n\nAny order of \nWeight\n, \nAlgorithm\n, \nModelDefinition\n, and \nPenalty\n arguments are\naccepted by \nStatLearn\n.", 
             "title": "Predictive Modeling"
