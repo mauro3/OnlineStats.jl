@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>API/Examples - OnlineStats.jl 0.6</title>
+        <title>API/Examples - OnlineStats.jl</title>
       
       
       
@@ -20,9 +20,9 @@
       
     
     <meta property="og:url" content="https://joshday.github.io/OnlineStats.jl/api/">
-    <meta property="og:title" content="OnlineStats.jl 0.6">
+    <meta property="og:title" content="OnlineStats.jl">
     <meta property="og:image" content="https://joshday.github.io/OnlineStats.jl/api//../">
-    <meta name="apple-mobile-web-app-title" content="OnlineStats.jl 0.6">
+    <meta name="apple-mobile-web-app-title" content="OnlineStats.jl">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
@@ -70,7 +70,10 @@
   
   
   
-  <body class="palette-primary-indigo ">
+  <body class="palette-primary-indigo palette-accent-blue">
+    
+      
+      
     
     <div class="backdrop">
       <div class="backdrop-paper"></div>
@@ -127,22 +130,41 @@
       <div class="drawer">
         <nav aria-label="Navigation">
   
-  <a href="/" class="project">
+  <a href="https://github.com/joshday/OnlineStats.jl" class="project">
     <div class="banner">
       
       <div class="name">
         <strong>
-          OnlineStats.jl 0.6
+          OnlineStats.jl
           <span class="version">
-            
+            0.6.0
           </span>
         </strong>
+        
+          <br>
+          joshday/OnlineStats.jl
         
       </div>
     </div>
   </a>
   <div class="scrollable">
     <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+            <a href="https://github.com/joshday/OnlineStats.jl/archive/0.6.0.zip" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/joshday/OnlineStats.jl/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
       
       <div class="toc">
         <ul>
@@ -432,7 +454,7 @@
       <article class="article">
         <div class="wrapper">
           
-          <!--- Generated at 2016-06-12T10:04:48.  Don't edit --->
+          <!--- Generated at 2016-06-13T21:25:52.  Don't edit --->
 
 <h1 id="api">API</h1>
 <h2 id="bernoullibootstrap">BernoulliBootstrap</h2>
@@ -745,7 +767,7 @@ fit!(o, y, wts) # update observation i using wts[i]
 <h2 id="map_rows">map_rows</h2>
 <p>Perform operations on data in blocks.</p>
 <p><code>map_rows(f::Function, b::Integer, data...)</code></p>
-<p>This function iteratively feeds blocks of <code>data</code> of size <code>b</code> observations to the function <code>f</code>.  The most common usage is with <code>do</code> blocks:</p>
+<p>This function iteratively feeds <code>data</code> in blocks of <code>b</code> observations to the function <code>f</code>.  The most common usage is with <code>do</code> blocks:</p>
 <div class="code"><pre><span class="c"># Example 1</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">o</span> <span class="o">=</span> <span class="n">Variance</span><span class="p">()</span>
@@ -828,7 +850,7 @@ value(o)
     </main>
     <script>
       var base_url = '..';
-      var repo_id  = '';
+      var repo_id  = 'joshday/OnlineStats.jl';
     </script>
     <script src="../assets/javascripts/application-997097ee0c.js"></script>
     
