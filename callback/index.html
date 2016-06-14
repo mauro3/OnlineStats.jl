@@ -262,7 +262,7 @@
           <h1 id="callbacks">Callbacks</h1>
 <p>While an OnlineStat is being updated, you may wish to perform an action like print intermediate results to a log file or update a plot.  For this purpose, OnlineStats exports a <code>map_rows</code> function.</p>
 <p><code>map_rows(f::Function, b::Integer, data...)</code></p>
-<p><code>map_rows</code> works similar to <code>Base.map</code>, but passes the arguments to the function in batches of size <code>b</code>.</p>
+<p><code>map_rows</code> works similar to <code>Base.map</code>, but passes the arguments to the function in batches of size <code>b</code>.  It is best used with Julia's do block syntax.</p>
 <h2 id="example-1">Example 1</h2>
 <h3 id="input">Input</h3>
 <div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
