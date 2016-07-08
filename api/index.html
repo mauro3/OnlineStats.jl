@@ -314,6 +314,12 @@
             </li>
           
             <li class="anchor">
+              <a title="LogisticRegression" href="#logisticregression">
+                LogisticRegression
+              </a>
+            </li>
+          
+            <li class="anchor">
               <a title="Mean" href="#mean">
                 Mean
               </a>
@@ -356,8 +362,8 @@
             </li>
           
             <li class="anchor">
-              <a title="StatLearn" href="#statlearn">
-                StatLearn
+              <a title="SVMLike" href="#svmlike">
+                SVMLike
               </a>
             </li>
           
@@ -410,8 +416,8 @@
             </li>
           
             <li class="anchor">
-              <a title="map_rows" href="#map_rows">
-                map_rows
+              <a title="maprows" href="#maprows">
+                maprows
               </a>
             </li>
           
@@ -463,7 +469,7 @@
       <article class="article">
         <div class="wrapper">
           
-          <!--- Generated at 2016-06-15T22:17:50.  Don't edit --->
+          <!--- Generated at 2016-07-08T11:28:07.  Don't edit --->
 
 <h1 id="api">API</h1>
 <h2 id="bernoullibootstrap">BernoulliBootstrap</h2>
@@ -583,6 +589,8 @@ confint(o, .95)
 </pre></div>
 
 
+<h2 id="logisticregression">LogisticRegression</h2>
+<p>For data in {0, 1}</p>
 <h2 id="mean">Mean</h2>
 <p>Mean of a single series.</p>
 <div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -644,48 +652,8 @@ confint(o, .95)
 </pre></div>
 
 
-<h2 id="statlearn">StatLearn</h2>
-<p>Online statistical learning algorithms.</p>
-<ul>
-<li><code>StatLearn(p)</code></li>
-<li><code>StatLearn(x, y)</code></li>
-<li><code>StatLearn(x, y, b)</code></li>
-</ul>
-<p>The model is defined by:</p>
-<h4 id="modeldefinition"><code>ModelDefinition</code></h4>
-<ul>
-<li><code>L2Regression()</code>     - Squared error loss.  Default.</li>
-<li><code>L1Regression()</code>     - Absolute loss</li>
-<li><code>LogisticRegression()</code>     - Model for data in {0, 1}</li>
-<li><code>PoissonRegression()</code>     - Model count data {0, 1, 2, 3, ...}</li>
-<li><code>QuantileRegression(τ)</code>     - Model conditional quantiles</li>
-<li><code>SVMLike()</code>     - For data in {-1, 1}.  Perceptron with <code>NoPenalty</code>. SVM with <code>RidgePenalty</code>.</li>
-<li><code>HuberRegression(δ)</code>     - Robust Huber loss</li>
-</ul>
-<h4 id="penalty"><code>Penalty</code></h4>
-<ul>
-<li><code>NoPenalty()</code>     - No penalty.  Default.</li>
-<li><code>RidgePenalty(λ)</code>     - Ridge regularization: <code>dot(β, β)</code></li>
-<li><code>LassoPenalty(λ)</code>     - Lasso regularization: <code>sumabs(β)</code></li>
-<li><code>ElasticNetPenalty(λ, α)</code>     - Ridge/LASSO weighted average.  <code>α = 0</code> is Ridge, <code>α = 1</code> is LASSO.</li>
-<li><code>SCADPenalty(λ, a = 3.7)</code>     - Smoothly clipped absolute deviation penalty.  Essentially LASSO with less bias     for larger coefficients.</li>
-</ul>
-<h4 id="algorithm"><code>Algorithm</code></h4>
-<ul>
-<li><code>SGD()</code>     - Stochastic gradient descent.  Default.</li>
-<li><code>AdaGrad()</code>     - Adaptive gradient method. Ignores <code>Weight</code>.</li>
-<li><code>AdaDelta()</code>     - Extension of AdaGrad.  Ignores <code>Weight</code>.</li>
-<li><code>RDA()</code>     - Regularized dual averaging with ADAGRAD.  Ignores <code>Weight</code>.</li>
-<li><code>MMGrad()</code>     - Experimental online MM gradient method.</li>
-</ul>
-<p><strong>Note:</strong> The order of the <code>ModelDefinition</code>, <code>Penalty</code>, and <code>Algorithm</code> arguments don't matter.</p>
-<div class="code"><pre><span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">AdaGrad</span><span class="p">())</span>
-<span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">MMGrad</span><span class="p">(),</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">),</span> <span class="n">RDA</span><span class="p">(),</span> <span class="n">SVMLike</span><span class="p">(),</span> <span class="n">RidgePenalty</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-
-
+<h2 id="svmlike">SVMLike</h2>
+<p>For data in {-1, 1}</p>
 <h2 id="sum">Sum</h2>
 <p>Track the running sum.  Ignores <code>Weight</code>.</p>
 <div class="code"><pre><span class="n">o</span> <span class="o">=</span> <span class="n">Sum</span><span class="p">()</span>
@@ -778,6 +746,66 @@ fit!(o, y, wts) # update observation i using wts[i]
 </pre></div>
 
 
+<p>Update an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.</p>
+<div class="code"><pre>y = randn(100)
+o = Mean()
+
+fit!(o, y)      # standard usage
+
+fit!(o, y, 10)  # update in minibatches of size 10
+
+fit!(o, y, .1)  # update using weight .1 for each observation
+
+wts = rand(100)
+fit!(o, y, wts) # update observation i using wts[i]
+</pre></div>
+
+
+<p>Update an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.</p>
+<div class="code"><pre>y = randn(100)
+o = Mean()
+
+fit!(o, y)      # standard usage
+
+fit!(o, y, 10)  # update in minibatches of size 10
+
+fit!(o, y, .1)  # update using weight .1 for each observation
+
+wts = rand(100)
+fit!(o, y, wts) # update observation i using wts[i]
+</pre></div>
+
+
+<p>Update an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.</p>
+<div class="code"><pre>y = randn(100)
+o = Mean()
+
+fit!(o, y)      # standard usage
+
+fit!(o, y, 10)  # update in minibatches of size 10
+
+fit!(o, y, .1)  # update using weight .1 for each observation
+
+wts = rand(100)
+fit!(o, y, wts) # update observation i using wts[i]
+</pre></div>
+
+
+<p>Update an OnlineStat with more data.  Additional arguments after the input data provide extra control over how the updates are done.</p>
+<div class="code"><pre>y = randn(100)
+o = Mean()
+
+fit!(o, y)      # standard usage
+
+fit!(o, y, 10)  # update in minibatches of size 10
+
+fit!(o, y, .1)  # update using weight .1 for each observation
+
+wts = rand(100)
+fit!(o, y, wts) # update observation i using wts[i]
+</pre></div>
+
+
 <h2 id="fitdistribution">fitdistribution</h2>
 <p>Estimate the parameters of a distribution.</p>
 <div class="code"><pre><span class="k">using</span> <span class="n">Distributions</span>
@@ -803,14 +831,14 @@ fit!(o, y, wts) # update observation i using wts[i]
 </pre></div>
 
 
-<h2 id="map_rows">map_rows</h2>
+<h2 id="maprows">maprows</h2>
 <p>Perform operations on data in blocks.</p>
-<p><code>map_rows(f::Function, b::Integer, data...)</code></p>
+<p><code>maprows(f::Function, b::Integer, data...)</code></p>
 <p>This function iteratively feeds <code>data</code> in blocks of <code>b</code> observations to the function <code>f</code>.  The most common usage is with <code>do</code> blocks:</p>
 <div class="code"><pre><span class="c"># Example 1</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">o</span> <span class="o">=</span> <span class="n">Variance</span><span class="p">()</span>
-<span class="n">map_rows</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">yi</span>
+<span class="n">maprows</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">yi</span>
     <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Updated with another batch!&quot;</span><span class="p">)</span>
 <span class="k">end</span>
