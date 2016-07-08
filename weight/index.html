@@ -278,11 +278,6 @@
           <h1 id="weighting">Weighting</h1>
 <p>OnlineStats are parameterized by a <code>Weight</code> type that determines the influence of the
 next observation.  The <code>Weight</code> is always the last argument of the constructor.</p>
-<div class="code"><pre><span class="c"># Example</span>
-<span class="n">o</span> <span class="o">=</span> <span class="n">CovMatrix</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">EqualWeight</span><span class="p">())</span>
-</pre></div>
-
-
 <p><img alt="" src="../images/weights.png" /></p>
 <h2 id="weight-types">Weight Types</h2>
 <p>Many updates take the form of a weighted average.  For a current estimate <script type="math/tex">\theta^{(t-1)}</script> and new value <script type="math/tex">x_t</script>, we update the estimate with:</p>
