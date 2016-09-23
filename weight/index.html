@@ -64,22 +64,6 @@
       </style>
     
     
-      <link rel="stylesheet" href="../site/assets/stylesheets/application-0dac3e5884.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/application.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/palettes-05ab2406df.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/palettes.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/application-0dac3e5884.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/application.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/palettes-05ab2406df.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/palettes.css">
-    
     <script src="../assets/javascripts/modernizr-4ab42b99fd.js"></script>
     
   </head>
@@ -286,7 +270,7 @@ next observation.  The <code>Weight</code> is always the last argument of the co
 </p>
 <p>Consider how the weights <script type="math/tex">\gamma_t</script> affect the influence of the new value on the estimate.  The weight types below will be explained in terms of the weights <script type="math/tex">\gamma_t</script>.</p>
 <h3 id="equalweight">EqualWeight</h3>
-<div class="code"><pre>EqualWeight()
+<div class="code"><pre><span></span>EqualWeight()
 </pre></div>
 
 
@@ -295,7 +279,7 @@ next observation.  The <code>Weight</code> is always the last argument of the co
 <script type="math/tex; mode=display">\gamma_t = \frac{1}{t}</script>
 </p>
 <h3 id="exponentialweight">ExponentialWeight</h3>
-<div class="code"><pre>ExponentialWeight(λ::Float64)
+<div class="code"><pre><span></span>ExponentialWeight(λ::Float64)
 ExponentialWeight(lookback::Int)
 </pre></div>
 
@@ -306,7 +290,7 @@ ExponentialWeight(lookback::Int)
 </p>
 <p>where <code>λ = 2 / (lookback + 1)</code></p>
 <h3 id="boundedequalweight">BoundedEqualWeight</h3>
-<div class="code"><pre>BoundedEqualWeight(λ::Float64)
+<div class="code"><pre><span></span>BoundedEqualWeight(λ::Float64)
 BoundedEqualWeight(lookback::Int)
 </pre></div>
 
@@ -316,7 +300,7 @@ BoundedEqualWeight(lookback::Int)
 <script type="math/tex; mode=display">\gamma_t = \text{max}\left(\lambda, \frac{1}{t}\right)</script>
 </p>
 <h3 id="learningrate">LearningRate</h3>
-<div class="code"><pre>LearningRate(r::Float64 = .5, λ::Float64 = 0.0)
+<div class="code"><pre><span></span>LearningRate(r::Float64 = .5, λ::Float64 = 0.0)
 </pre></div>
 
 
@@ -327,12 +311,12 @@ until reaching a minimum weight, then uses <code>ExponentialWeight</code>.</p>
 </p>
 <h2 id="override-the-weight">Override the Weight</h2>
 <p>You can override an OnlineStat's Weight with an additional argument to <code>fit!</code>.  </p>
-<div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<div class="code"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">(</span><span class="n">EqualWeight</span><span class="p">())</span>
-<span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">.</span><span class="mi">01</span><span class="p">)</span>  <span class="c"># use weight of .01 for each observation</span>
+<span class="n">fit!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">.</span><span class="mi">01</span><span class="p">)</span>  <span class="c"># use weight of .01 for each observation</span>
 
 <span class="n">wts</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">wts</span><span class="p">)</span>  <span class="c"># use weight of wts[i] for observation y[i]</span>
+<span class="n">fit!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">wts</span><span class="p">)</span>  <span class="c"># use weight of wts[i] for observation y[i]</span>
 </pre></div>
           <aside class="copyright" role="note">
             

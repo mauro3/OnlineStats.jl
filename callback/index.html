@@ -64,22 +64,6 @@
       </style>
     
     
-      <link rel="stylesheet" href="../site/assets/stylesheets/application-0dac3e5884.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/application.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/palettes-05ab2406df.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/palettes.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/application-0dac3e5884.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/application.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/palettes-05ab2406df.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/palettes.css">
-    
     <script src="../assets/javascripts/modernizr-4ab42b99fd.js"></script>
     
   </head>
@@ -287,17 +271,17 @@
 <p><code>maprows</code> works similar to <code>Base.mapslices</code>, but maps <code>b</code> rows at a time.  It is best used with Julia's do block syntax.</p>
 <h2 id="example-1">Example 1</h2>
 <h3 id="input">Input</h3>
-<div class="code"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="code"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">o</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">()</span>
 <span class="n">maprows</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">yi</span>
-    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
-    <span class="n">info</span><span class="p">(</span><span class="s">&quot;value of mean is </span><span class="si">$</span><span class="s">(mean(o))&quot;</span><span class="p">)</span>
+    <span class="n">fit!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="n">info</span><span class="p">(</span><span class="s">&quot;value of mean is </span><span class="si">$(mean(o))</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 
 
 <h3 id="output">Output</h3>
-<div class="code"><pre><span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="mf">0.06340121912925167</span>
+<div class="code"><pre><span></span><span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="mf">0.06340121912925167</span>
 <span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="o">-</span><span class="mf">0.06576995293439102</span>
 <span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="mf">0.05374292238752276</span>
 <span class="n">INFO</span><span class="o">:</span> <span class="n">value</span> <span class="n">of</span> <span class="n">mean</span> <span class="k">is</span> <span class="mf">0.008857939006120167</span>
@@ -307,7 +291,7 @@
 
 <h2 id="example-2">Example 2</h2>
 <h3 id="input_1">Input</h3>
-<div class="code"><pre><span class="k">using</span> <span class="n">Plots</span><span class="p">;</span> <span class="n">pyplot</span><span class="p">()</span>
+<div class="code"><pre><span></span><span class="k">using</span> <span class="n">Plots</span><span class="p">;</span> <span class="n">pyplot</span><span class="p">()</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span>
 
 <span class="n">o</span> <span class="o">=</span> <span class="n">QuantileMM</span><span class="p">(</span><span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">),</span> <span class="n">tau</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">])</span>
@@ -315,8 +299,8 @@
 <span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>       <span class="c"># initialize plot</span>
 
 <span class="n">maprows</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">yi</span>              <span class="c"># for each batch of 50 observations</span>
-    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>                 <span class="c"># fit in minibatches of 5</span>
-    <span class="n">push</span><span class="o">!</span><span class="p">(</span><span class="n">plt</span><span class="p">,</span> <span class="n">nobs</span><span class="p">(</span><span class="n">o</span><span class="p">),</span> <span class="n">value</span><span class="p">(</span><span class="n">o</span><span class="p">))</span>  <span class="c"># Add a value to the plot</span>
+    <span class="n">fit!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>                 <span class="c"># fit in minibatches of 5</span>
+    <span class="n">push!</span><span class="p">(</span><span class="n">plt</span><span class="p">,</span> <span class="n">nobs</span><span class="p">(</span><span class="n">o</span><span class="p">),</span> <span class="n">value</span><span class="p">(</span><span class="n">o</span><span class="p">))</span>  <span class="c"># Add a value to the plot</span>
 <span class="k">end</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
@@ -327,21 +311,21 @@
 <p><img alt="" src="../images/example2.png" /></p>
 <h2 id="example-3">Example 3</h2>
 <h3 id="input_2">Input</h3>
-<div class="code"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="err">β</span> <span class="o">=</span> <span class="n">collect</span><span class="p">(</span><span class="mf">1.</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="err">β</span> <span class="o">+</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<div class="code"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">β</span> <span class="o">=</span> <span class="n">collect</span><span class="p">(</span><span class="mf">1.</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">β</span> <span class="o">+</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 
 <span class="n">o</span> <span class="o">=</span> <span class="n">LinReg</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="n">maprows</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span>
-    <span class="n">fit</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
-    <span class="n">info</span><span class="p">(</span><span class="s">&quot;You have fit </span><span class="si">$</span><span class="s">(nobs(o)) observations&quot;</span><span class="p">)</span>
+    <span class="n">fit!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="n">info</span><span class="p">(</span><span class="s">&quot;You have fit </span><span class="si">$(nobs(o))</span><span class="s"> observations&quot;</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 
 
 <h3 id="output_2">Output</h3>
-<div class="code"><pre><span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">100</span> <span class="n">observations</span>
+<div class="code"><pre><span></span><span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">100</span> <span class="n">observations</span>
 <span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">200</span> <span class="n">observations</span>
 <span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">300</span> <span class="n">observations</span>
 <span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">400</span> <span class="n">observations</span>

@@ -64,22 +64,6 @@
       </style>
     
     
-      <link rel="stylesheet" href="../site/assets/stylesheets/application-0dac3e5884.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/application.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/palettes-05ab2406df.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/palettes.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/application-0dac3e5884.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/application.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/palettes-05ab2406df.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/palettes.css">
-    
     <script src="../assets/javascripts/modernizr-4ab42b99fd.js"></script>
     
   </head>
@@ -343,27 +327,28 @@
 <li>Stochastic gradient descent.  Default.</li>
 </ul>
 </li>
+<li><code>Momentum(α = .1)</code><ul>
+<li>SGD with momentum.</li>
+</ul>
+</li>
 <li><code>AdaGrad()</code><ul>
 <li>Adaptive gradient method. Ignores <code>Weight</code>.</li>
 </ul>
 </li>
-<li><code>AdaDelta()</code><ul>
+<li><code>AdaDelta(ρ = .001)</code><ul>
 <li>Essentially AdaGrad with momentum and altered Hessian approximation.  Ignores <code>Weight</code>.</li>
 </ul>
 </li>
-<li><code>RDA()</code><ul>
-<li>Regularized dual averaging with ADAGRAD.  Ignores <code>Weight</code>.</li>
-</ul>
-</li>
-<li><code>MMGrad()</code><ul>
-<li>Experimental online MM gradient method.</li>
+<li><code>ADAM(m1 = .01, m2 = .01)</code><ul>
+<li><code>m1</code> is "momentum" for first moment of update</li>
+<li><code>m2</code> is "momentum" for second moment</li>
 </ul>
 </li>
 </ul>
 <h2 id="learning-rates-and-batch-sizes-matter">Learning rates and batch sizes matter</h2>
 <p>Using mini-batches, gradient estimates are less noisy.  The trade-off,
 of course, is that fewer updates occur.</p>
-<div class="code"><pre><span class="n">o1</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">))</span>      <span class="c"># batch size = 1</span>
+<div class="code"><pre><span></span><span class="n">o1</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">))</span>      <span class="c"># batch size = 1</span>
 <span class="n">o2</span> <span class="o">=</span> <span class="n">StatLearn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">),</span> <span class="n">SGD</span><span class="p">())</span>  <span class="c"># batch size = 10</span>
 </pre></div>
 
@@ -373,6 +358,9 @@ of course, is that fewer updates occur.</p>
 <p>Any order of <code>Weight</code>, <code>Algorithm</code>, <code>ModelDefinition</code>, and <code>Penalty</code> arguments are
 accepted by <code>StatLearn</code>.</p>
 </div>
+<h1 id="extensions">Extensions</h1>
+<h2 id="statlearncv">StatLearnCV</h2>
+<p>TODO</p>
           <aside class="copyright" role="note">
             
             Documentation built with
