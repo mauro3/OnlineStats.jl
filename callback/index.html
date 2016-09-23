@@ -312,7 +312,7 @@
 
 <span class="n">o</span> <span class="o">=</span> <span class="n">QuantileMM</span><span class="p">(</span><span class="n">LearningRate</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">),</span> <span class="n">tau</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">])</span>
 
-<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>       <span class="c"># initialize plot</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>       <span class="c"># initialize plot</span>
 
 <span class="n">maprows</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">yi</span>              <span class="c"># for each batch of 50 observations</span>
     <span class="n">fit!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>                 <span class="c"># fit in minibatches of 5</span>
@@ -324,7 +324,7 @@
 
 
 <h3 id="output_1">Output</h3>
-<p><img alt="" src="https://cloud.githubusercontent.com/assets/8075494/18796073/9c844b30-8195-11e6-89a1-7ad9b4d891f2.png" /></p>
+<p><img alt="" src="https://cloud.githubusercontent.com/assets/8075494/18796290/978802e2-8196-11e6-8097-b65b722376fc.png" /></p>
 <h2 id="example-3">Example 3</h2>
 <h3 id="input_2">Input</h3>
 <div class="code"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
