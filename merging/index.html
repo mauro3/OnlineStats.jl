@@ -283,14 +283,14 @@
 
 <span class="c"># Treat o2 as a new batch of data.  Essentially:</span>
 <span class="c"># o1 = Mean(y1); fit!(o1, y2)</span>
-<span class="n">merge!</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span> <span class="p">:</span><span class="n">append</span><span class="p">)</span>
+<span class="n">merge!</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">,</span> <span class="p">:</span><span class="n">append</span><span class="p">)</span>
 
 <span class="c"># Use weighted average based on nobs of each OnlineStat</span>
-<span class="n">merge!</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span> <span class="p">:</span><span class="n">mean</span><span class="p">)</span>
+<span class="n">merge!</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">,</span> <span class="p">:</span><span class="n">mean</span><span class="p">)</span>
 
 <span class="c"># Treat o2 as a single observation.  Essentially:</span>
 <span class="c"># o1 = Mean(y1); fit!(o1, mean(y2))</span>
-<span class="n">merge!</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span> <span class="p">:</span><span class="n">singleton</span><span class="p">)</span>
+<span class="n">merge!</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">,</span> <span class="p">:</span><span class="n">singleton</span><span class="p">)</span>
 
 <span class="c"># Provide the ratio of influence o2 should have.</span>
 <span class="n">w</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
