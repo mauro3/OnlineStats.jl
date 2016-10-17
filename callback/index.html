@@ -64,22 +64,6 @@
       </style>
     
     
-      <link rel="stylesheet" href="../site/assets/stylesheets/application-0dac3e5884.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/application.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/palettes-05ab2406df.css">
-    
-      <link rel="stylesheet" href="../site/assets/stylesheets/palettes.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/application-0dac3e5884.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/application.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/palettes-05ab2406df.css">
-    
-      <link rel="stylesheet" href="../site/site/assets/stylesheets/palettes.css">
-    
     <script src="../assets/javascripts/modernizr-4ab42b99fd.js"></script>
     
   </head>
@@ -227,23 +211,8 @@
               </a>
             </li>
           
-            <li class="anchor">
-              <a title="Example 3" href="#example-3">
-                Example 3
-              </a>
-            </li>
-          
         </ul>
       
-    
-  </li>
-
-          
-            
-  <li>
-    <a class="" title="Predictive Modeling" href="../StatLearn/">
-      Predictive Modeling
-    </a>
     
   </li>
 
@@ -334,33 +303,6 @@
 
 <h3 id="output_1">Output</h3>
 <p><img alt="" src="https://cloud.githubusercontent.com/assets/8075494/18796290/978802e2-8196-11e6-8097-b65b722376fc.png" /></p>
-<h2 id="example-3">Example 3</h2>
-<h3 id="input_2">Input</h3>
-<div class="code"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">β</span> <span class="o">=</span> <span class="n">collect</span><span class="p">(</span><span class="mf">1.</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">β</span> <span class="o">+</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">o</span> <span class="o">=</span> <span class="n">LinReg</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="n">maprows</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span>
-    <span class="n">fit!</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
-    <span class="n">info</span><span class="p">(</span><span class="s">&quot;You have fit </span><span class="si">$(nobs(o))</span><span class="s"> observations&quot;</span><span class="p">)</span>
-<span class="k">end</span>
-</pre></div>
-
-
-<h3 id="output_2">Output</h3>
-<div class="code"><pre><span></span><span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">100</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">200</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">300</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">400</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">500</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">600</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">700</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">800</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">900</span> <span class="n">observations</span>
-<span class="n">INFO</span><span class="o">:</span> <span class="n">You</span> <span class="n">have</span> <span class="n">fit</span> <span class="mi">1000</span> <span class="n">observations</span>
-</pre></div>
           <aside class="copyright" role="note">
             
             Documentation built with
@@ -396,14 +338,14 @@
     </div>
     <div class="next">
       
-        <a href="../StatLearn/" title="Predictive Modeling">
+        <a href="../merging/" title="Merging">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                Predictive Modeling
+                Merging
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">
